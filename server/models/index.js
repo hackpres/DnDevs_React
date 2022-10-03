@@ -1,5 +1,6 @@
 import User from './User';
 import Bosses from './Bosses';
+import Cards from './Cards';
 
 
 
@@ -10,5 +11,4 @@ import Bosses from './Bosses';
 
 
 
-
-export default {User, Bosses};
+export default {User, Bosses, Cards};
