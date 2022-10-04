@@ -52,11 +52,11 @@ const bossSchema = new Schema(
         },
         images: imageSchema,
     },
-    {
-        toJSON: {
-            virtuals: true,
-        },
-    }
+    // {
+    //     toJSON: {
+    //         virtuals: true,
+    //     },
+    // }
 );
 
  
