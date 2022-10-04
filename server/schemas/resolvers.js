@@ -1,5 +1,5 @@
-import { AuthenticationError } from "apollo-server-express";
-
+const {Bosses} = require('../models');
+const {AuthenticationError} = require('apollo-server-express');
 const resolvers = {
 
         Query:{
@@ -12,7 +12,10 @@ const resolvers = {
                     return userData;
                 }
                 throw new AuthenticationError("Not Logged In");
-            }
+            },
+            bosses: async () => {
+                return Bosses.find();
+              },
         },
 
 
@@ -23,4 +26,4 @@ const resolvers = {
 
 
 
-export default resolvers;
+module.exports = resolvers;

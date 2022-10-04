@@ -1,9 +1,9 @@
 {
   "name": "dungeons_n_devs",
-  "type": "module",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node ./seeders/seed.js"
   
   },
   "dependencies": {

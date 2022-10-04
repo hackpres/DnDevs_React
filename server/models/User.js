@@ -1,5 +1,6 @@
-import { Schema, model } from "mongoose";
-import cardSchema from './Cards';
+const { Schema, model } = require('mongoose');
+const cardSchema = require('./Cards');
+
 
 const userSchema = new Schema(
   {
@@ -44,4 +45,4 @@ userSchema.methods.isCorrectPassword = async function (password){
 
 const User = model('User', userSchema);
 
-export default User;
+module.exports = User;

@@ -1,8 +1,9 @@
-import express from "express";
-import { ApolloServer } from "apollo-server-express";
-import path from "path";
-import { typeDefs, resolvers } from "./schemas/index.js";
-import db from "./config/connection.js";
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
+
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
 // import {authMiddleware} from './utils/auth.js'
 
 const PORT = process.env.PORT || 3001;

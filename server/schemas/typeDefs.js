@@ -1,5 +1,5 @@
-import {gql} from 'apollo-server-express';
 
+const {gql} = require('apollo-server-express');
 const typeDefs = gql `
     type User{
         _id:ID!
@@ -13,9 +13,16 @@ const typeDefs = gql `
         active: Boolean
     }
 
+    type Bosses{
+        name: String!
+        attack: Int!
+        defense: Int!
+
+    }
 
     type Query{
         me: User
+        bosses: [Bosses]!
     }
 
 `;
@@ -23,4 +30,4 @@ const typeDefs = gql `
 
 
 
-export default typeDefs;
+module.exports = typeDefs;
