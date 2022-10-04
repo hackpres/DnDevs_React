@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const cardSchema = require('./Cards');
-
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
@@ -25,11 +25,11 @@ const userSchema = new Schema(
     },
     savedCards: [cardSchema],
   },
-  {
-    toJSON: {
-      virtuals: true,
-    },
-  }
+  // {
+  //   toJSON: {
+  //     virtuals: true,
+  //   },
+  // }
 );
 
 userSchema.pre('save', async function (next){
