@@ -19,6 +19,7 @@ const imageSchema = new Schema({
   },
 });
 
+
 const bossSchema = new Schema(
   {
     name: {
