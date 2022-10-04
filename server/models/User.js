@@ -20,7 +20,8 @@ const userSchema = new Schema(
         type: Number
     },
     health:{
-        type:Number
+        type:Number,
+        default: 100,
     },
     savedCards: [cardSchema],
   },
