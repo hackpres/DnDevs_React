@@ -1,7 +1,6 @@
 {
   "name": "dungeons_n_devs",
   "version": "0.1.0",
-  "type": "module",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.0",
