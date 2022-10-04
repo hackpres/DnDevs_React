@@ -27,20 +27,20 @@ const resolvers = {
 
             },
             login: async (parent, { username, password }) => {
-                const profile = await Profile.findOne({ username});
+                const user = await User.findOne({ username});
           
-                if (!profile) {
+                if (!user) {
                   throw new AuthenticationError('No profile with this username found!');
                 }
           
-                const correctPw = await profile.isCorrectPassword(password);
+                const correctPw = await user.isCorrectPassword(password);
           
                 if (!correctPw) {
                   throw new AuthenticationError('Incorrect password!');
                 }
           
-                const token = signToken(profile);
-                return { token, profile };
+                const token = signToken(user);
+                return { token, user };
               },
         }
 
