@@ -1,22 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-import {useState, useEffect} from 'react';
-import Battle from './components/Battle';
-import Cards from './components/Cards';
-import Login from './components/Login';
-import Menu from './components/Menu';
-import Profile from './components/Profile';
-import Shop from './components/Shop';
+import Landing from './pages/Landing'
+import Battle from './pages/Battle';
+import Cards from './pages/Snippets';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Menu from './pages/Home';
+import Profile from './pages/Profile';
+import Shop from './pages/Shop';
+import { Routes, Route } from 'react-router-dom';
 
-const [page, setPage] = useState('');
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path='/' element={<Landing />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/shop' element={<Shop />} />
+        <Route path='/menu' element={<Menu />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/cards' element={<Cards />} />
+        <Route path='/battle' element={<Battle />} />
+      </Routes>
+    </>
   );
 }
 
