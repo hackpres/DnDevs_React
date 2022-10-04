@@ -1,6 +1,7 @@
-import User from './User';
-import Bosses from './Bosses';
-import Cards from './Cards';
+
+const User = require('./User');
+const Bosses = require('./Bosses');
+const Cards = require('./Cards');
 
 
 
@@ -10,5 +11,4 @@ import Cards from './Cards';
 
 
 
-
-export default {User, Bosses, Cards};
+module.exports = {User, Bosses, Cards};
