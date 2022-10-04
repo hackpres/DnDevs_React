@@ -1,33 +1,29 @@
-import { Schema, model } from "mongoose";
+const { Schema, model } = require('mongoose');
 
 const cardSchema = new Schema(
-{
-    name:{
-        type: String,
-        required: true,
-        unique: true,
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    description:{
-        type: String,
-        required: true,
+    description: {
+      type: String,
+      required: true,
     },
-    active:{
-        type: Boolean,
-        default: false
+    active: {
+      type: Boolean,
+      default: false,
     },
-   
-},
+  },
 
-{
-
-    toJSON:{
-        virtuals: true,
-    }
-}
-
-
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
 );
 
-const Cards = model('Cards', cardSchema);
+// const Cards = model("Cards", cardSchema);
 
-export default Cards;
+module.exports = cardSchema;
