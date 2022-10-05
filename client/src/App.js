@@ -6,14 +6,25 @@ import Signup from './pages/Signup';
 import Menu from './pages/Home';
 import Profile from './pages/Profile';
 import Shop from './pages/Shop';
+import { createGlobalStyle } from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflox-x: hidden;
+  }
+`;
 
 function App() {
+  //const [page, setPage] = useState('');
   return (
     <>
+      <GlobalStyle />
       <Routes>
-        <Route path='/' element={<Landing />} />
+        <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/shop' element={<Shop />} />
