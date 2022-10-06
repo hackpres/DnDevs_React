@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import Heading from "../components/Headings/Heading";
+import Nav from "../components/Navigation/Nav";
 
-function Snippets() {
+function Code() {
   return (
-    <div>Snippets</div>
-  )
+    <div>
+      <Heading h="h2" title="Code Snippets" />
+      <Nav />
+    </div>
+  );
 }
 
-export default Snippets
+export default Code;

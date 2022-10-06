@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Text() {
+function Text(props) {
   return (
-    <div>Text</div>
+    <p>{props.content}</p>
   )
 }
 
