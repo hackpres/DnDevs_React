@@ -4,7 +4,6 @@ const typeDefs = gql `
     type User{
         _id:ID
         username: String!
-        savedCards:[Card]
         attack: Int
         defense: Int
         health: Int
@@ -30,7 +29,7 @@ const typeDefs = gql `
     type Query{
         me: User
         bosses: [Bosses]!
-        
+        users: [User]!
     }
 
     type Mutation{

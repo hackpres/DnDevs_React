@@ -1,0 +1,7 @@
+[
+    {
+        "name": "Espresso Shot",
+        "description": "Description",
+        "modifier": "health + 5"
+    }
+]

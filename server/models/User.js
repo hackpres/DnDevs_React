@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const cardSchema = require('./Cards');
 const bcrypt = require('bcryptjs');
-
+const cards = require('../seeders/cardSeeds.json');
 const userSchema = new Schema(
   {
     username: {
@@ -23,7 +23,10 @@ const userSchema = new Schema(
         type:Number,
         default: 100,
     },
-    savedCards: [cardSchema],
+    // savedCards:{
+    //   type: [cardSchema],
+    //   default: [cards]
+    // },
   },
   // {
   //   toJSON: {

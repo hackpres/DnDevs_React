@@ -1,8 +1,8 @@
 
 const db = require('../config/connection');
-const {Bosses} = require('../models/index');
+const {Bosses, User} = require('../models/index');
 const bossSeeds = require('./bossSeeds.json');
-
+const cardSeeds = require('./cardSeeds.json');
 db.once('open', async () => {
   try {
     await Bosses.deleteMany({});
