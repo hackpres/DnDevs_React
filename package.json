@@ -10,9 +10,6 @@
     "build": "cd client && npm run build"
   },
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "bcryptjs": "^2.4.3",
-    "concurrently": "^7.4.0",
-    "styled-components": "^5.3.6"
+    "concurrently": "^7.4.0"
   }
 }

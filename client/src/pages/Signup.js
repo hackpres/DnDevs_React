@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Navigation from '../components/Buttons/Navigation';
+
 
 function Signup() {
   return (
-    <div>Signup</div>
+    <>
+      <Navigation title='Submit' destination='creation' />
+    </>
   )
 }
 

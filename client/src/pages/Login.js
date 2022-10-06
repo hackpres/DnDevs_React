@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Navigation from '../components/Buttons/Navigation';
 
 function Login() {
   return (
-    <div>Login</div>
+    <>
+      <Navigation title="Submit" destination="home" />
+    </>
   )
 }
 
