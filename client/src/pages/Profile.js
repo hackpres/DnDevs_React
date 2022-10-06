@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Nav from "../components/Navigation/Nav";
 
 function Profile() {
   return (
-    <div>Profile</div>
-  )
+    <div>
+      <Nav />
+    </div>
+  );
 }
 
-export default Profile
+export default Profile;

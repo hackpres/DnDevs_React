@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Nav from "../components/Navigation/Nav";
 
-function Snippets() {
+function Code() {
   return (
-    <div>Snippets</div>
-  )
+    <div>
+      <Nav />
+    </div>
+  );
 }
 
-export default Snippets
+export default Code;
