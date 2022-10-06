@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Navigation from '../components/Buttons/Navigation';
+
 
 function Home() {
   return (
-    <div>Home</div>
+    <>
+      <Navigation title='Battle' destination='battle' />
+    </>
   )
 }
 

@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Menu from './pages/Home';
 import Profile from './pages/Profile';
 import Shop from './pages/Shop';
+import Creation from './pages/CharacterCreation';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { createGlobalStyle } from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
@@ -39,6 +40,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/cards' element={<Cards />} />
         <Route path='/battle' element={<Battle />} />
+        <Route path='/creation' element={<Creation />} />
       </Routes>
     </ApolloProvider>
   );
