@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Navigation from '../components/Buttons/Navigation';
+
 
 function CharacterCreation() {
   return (
-    <div>CharacterCreation</div>
+    <>
+      <Navigation title='Create' destination='home' />
+    </>
   )
 }
 
