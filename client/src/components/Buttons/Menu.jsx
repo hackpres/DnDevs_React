@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-function Menu() {
+function Menu(props) {
+
   return (
-    <div>Menu</div>
+    <button onClick={props.openModal}>{props.label}</button>
   )
 }
 
