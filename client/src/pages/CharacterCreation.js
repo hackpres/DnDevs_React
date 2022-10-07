@@ -4,11 +4,14 @@ import { Formik, Form } from "formik";
 import Input from "../components/Template/Input";
 import Text from "../components/Template/Text";
 import Navigation from "../components/Buttons/Navigation";
+import Modals from "../components/Modal/Modals";
+import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
 
 function CharacterCreation() {
   const validateName = () => {};
   return (
     <>
+      <Modals modalContent={<MainMenuModalContent />} />
       <Heading title="charName" />
       <Formik>
         <Form>
