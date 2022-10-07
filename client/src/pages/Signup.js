@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Form } from "formik";
 import Input from "../components/Template/Input";
 import Navigation from "../components/Buttons/Navigation";
+import Modals from "../components/Modal/Modals";
+import SupportModalContent from "../components/Modal/SupportModalContent";
 
 function Signup() {
   const validateUsername = () => {};
@@ -21,6 +23,7 @@ function Signup() {
       </Formik>
 
       <Navigation title="Submit" destination="creation" />
+      <Modals label="Support" modalContent={<SupportModalContent />} />
     </>
   );
 }

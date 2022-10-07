@@ -1,10 +1,5 @@
 import Heading from '../Headings/Heading';
-import styled from 'styled-components';
-import Modals from './Modals';
-
-const ListItem = styled.li`
-
-`;
+import Modals, { ListItem } from './Modals';
 
 const SupportModalContent = () => {
     return (

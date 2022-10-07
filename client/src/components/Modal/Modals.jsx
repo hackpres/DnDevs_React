@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Menu from '../Buttons/Menu';
 import CloseMenu from '../Buttons/CloseMenu';
+import styled from 'styled-components';
+
+export const ListItem = styled.li`
+
+`;
 
 Modal.setAppElement('#root')
 
