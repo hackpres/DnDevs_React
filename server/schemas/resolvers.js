@@ -17,6 +17,9 @@ const resolvers = {
             bosses: async () => {
                 return Bosses.find();
               },
+              users: async()=>{
+                return User.find();
+              }
         },
 
         Mutation: {
@@ -41,6 +44,23 @@ const resolvers = {
           
                 const token = signToken(user);
                 return { token, user };
+              },
+              addCard: async (parent, {userId, card})=>{
+                console.log(card);
+                // return;
+                return User.findOneAndUpdate(
+                  {_id: userId},
+                  {
+                    $push: {savedCards: card}
+                  },
+                  {
+                    new: true,
+                    runValidators: true,
+                  }
+                )
+              },
+              removeUser: async (parent, {userId}) =>{
+                return User.findOneAndDelete({_id: userId});
               },
         }
 
