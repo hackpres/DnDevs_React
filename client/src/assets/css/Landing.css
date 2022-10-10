@@ -1,23 +1,43 @@
 body {
-    background-image: url('../img/login.png');
+    background-image: url('../img/backgrounds/landing.png');
     background-size: cover !important;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width:100% !important; 
+    /* min-width:100% !important; 
     min-height:100% !important; 
     width:auto; 
     height:auto;
-    position: absolute;
+    position: absolute; */
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
 }
 
 #terminal {
     background-image: url('../img/blankterminal.png');
-    background-size: cover;
-    width: 100%;
-    padding: 50%;
+    background-size: contain;
+    margin: auto;
+    height: 50%;
+    width: 50%;
+    background-repeat: no-repeat;
+    /* display: flex; */
+    justify-content: left;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+button {
     display: flex;
-    justify-content: center;
-    
+    flex-wrap: wrap;
+    flex-direction: row;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: rgb(0, 109, 0);
+    border: none;
 }
