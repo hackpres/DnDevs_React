@@ -35,6 +35,7 @@ const typeDefs = gql `
         me: User
         bosses: [Bosses]!
         users: [User]!
+        user(userId: ID!): User
     }
 
     type Mutation{
@@ -42,6 +43,7 @@ const typeDefs = gql `
         login(username: String!, password: String!): Auth
         addCard(userId: ID!, card: CardInput!): User
         removeUser(userId: ID!): User
+        
     }
 
 `;
