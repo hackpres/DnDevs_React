@@ -4,7 +4,7 @@ import NavScroll from './NavScroll'
 import NavText from './NavText'
 import Navigation from '../Buttons/Navigation'
 
-// shop home code profile
+// buttons needed: shop home code profile
 
 function Nav() {
   return (
