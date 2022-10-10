@@ -52,7 +52,7 @@ const resolvers = {
       return { token, user };
     },
     addCard: async (parent, { userId, card }) => {
-      console.log(card);
+      
       // return;
       return User.findOneAndUpdate(
         { _id: userId },
