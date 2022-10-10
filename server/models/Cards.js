@@ -11,10 +11,11 @@ const cardSchema = new Schema(
       type: String,
       required: true,
     },
-    active: {
-      type: Boolean,
-      default: false,
-    },
+    modifier:{
+      type: String,
+      required: true,
+    }
+  
   },
 
   // {

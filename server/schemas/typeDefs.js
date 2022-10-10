@@ -4,17 +4,17 @@ const typeDefs = gql `
     type User{
         _id:ID
         username: String!
-        savedCards:[Card]
+        savedCards:[Card]!
         attack: Int
         defense: Int
         health: Int
     }
 
     type Card{
-        cardId: ID!
+        _id: ID!
         name: String!
-        description: String
-        active: Boolean
+        description: String!
+        modifier: String!
     }
     type Auth{
         token: ID!
@@ -26,16 +26,24 @@ const typeDefs = gql `
         defense: Int!
 
     }
-
+    input CardInput{
+        name: String!
+        description: String!
+        modifier: String!
+    }
     type Query{
         me: User
         bosses: [Bosses]!
-        
+        users: [User]!
+        user(userId: ID!): User
     }
 
     type Mutation{
         addUser(username: String!, password:String!): Auth
         login(username: String!, password: String!): Auth
+        addCard(userId: ID!, card: CardInput!): User
+        removeUser(userId: ID!): User
+        
     }
 
 `;
