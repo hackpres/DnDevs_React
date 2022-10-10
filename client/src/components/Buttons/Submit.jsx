@@ -1,8 +1,12 @@
 import React from 'react'
 
 function Submit() {
+  const handleSubmit = () => {
+    console.log(value);
+  }
+
   return (
-    <div>Submit</div>
+    <button onSubmit={() => handleSubmit()}>Submit</button>
   )
 }
 

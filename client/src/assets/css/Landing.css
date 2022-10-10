@@ -1,0 +1,23 @@
+body {
+    background-image: url('../img/login.png');
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width:100% !important; 
+    min-height:100% !important; 
+    width:auto; 
+    height:auto;
+    position: absolute;
+}
+
+#terminal {
+    background-image: url('../img/blankterminal.png');
+    background-size: cover;
+    width: 100%;
+    padding: 50%;
+    display: flex;
+    justify-content: center;
+    
+}
