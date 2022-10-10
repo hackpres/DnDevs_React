@@ -5,6 +5,7 @@ import Input from "../components/Template/Input";
 import Navigation from "../components/Buttons/Navigation";
 import Modals from '../components/Modal/Modals';
 import SupportModalContent from '../components/Modal/SupportModalContent';
+import '../assets/css/Login.css';
 
 
 function Login() {
