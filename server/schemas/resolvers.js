@@ -21,12 +21,9 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
-    user: async (parent, {userId}) =>{
-     return User.findOne(
-         {_id: userId}
-      );
-     
-    }
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId });
+    },
   },
 
   Mutation: {
@@ -52,7 +49,6 @@ const resolvers = {
       return { token, user };
     },
     addCard: async (parent, { userId, card }) => {
-      
       // return;
       return User.findOneAndUpdate(
         { _id: userId },
