@@ -1,8 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react';
 
-function Action() {
+
+function Action(props) {
+  const [action, setAction] = useState('');
+  const handleAction = (props) => {
+    setAction(props);
+  }
+
   return (
-    <div>Action</div>
+    <button onClick={() => handleAction}>
+      {props.label}
+    </button>
   )
 }
 
