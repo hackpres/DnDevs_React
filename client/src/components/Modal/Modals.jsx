@@ -5,7 +5,7 @@ import CloseMenu from '../Buttons/CloseMenu';
 import styled from 'styled-components';
 
 export const ListItem = styled.li`
-
+padding: 0.5em
 `;
 
 Modal.setAppElement('#root')
