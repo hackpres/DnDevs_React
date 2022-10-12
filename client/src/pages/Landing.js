@@ -8,11 +8,12 @@ import '../assets/css/Landing.css';
 function Landing() {
   return (
     <>
-        <div id="terminal">
-          <Navigation title="Login" destination="login" />
-          <Navigation title="Signup" destination="signup" />
-          <Modals label="Support" afterOpen={afterOpenModal()} modalContent={<SupportModalContent />} />
-        </div>
+      <div id="logo"></div>
+      <div id="terminal">
+        <Navigation title="login" destination="login" id="login"/>
+        <Navigation title="signup" destination="signup" id="signup"/>
+        <Modals label="support" afterOpen={afterOpenModal()} modalContent={<SupportModalContent />} id="support"/>
+      </div>
     </>
   )
 }

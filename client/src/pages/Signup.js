@@ -7,6 +7,7 @@ import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 import signupSchema from "../utils/signupSchema";
 import { Link } from "react-router-dom";
+import '../assets/css/Signup.css';
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
@@ -49,46 +50,50 @@ function Signup() {
 
   return (
     <>
-      <Heading title="Signup" />
-      <Formik
-        initialValues={{
-          username: "",
-          password: "",
-        }}
-        validationSchema={signupSchema}
-        onSubmit={handleSignUpSubmit}
-      >
-        {({ values, errors, touched }) => (
-          <Form>
-            <Input
-              title="username"
-              type="text"
-              value={formState.username}
-              placeholder="Your Username"
-              onChange={handleChange}
-            ></Input>
-            {errors.username && touched.username
-              ? console.log(errors.username)
-              : null}
-            <Input
-              title="password"
-              type="password"
-              placeholder="******"
-              value={formState.password}
-              onChange={handleChange}
-            ></Input>
-            {errors.password && touched.password
-              ? console.log(errors.password)
-              : null}
-            <Link to="/creation">
-              <button type="submit">Submit</button>
-            </Link>
-          </Form>
-        )}
-      </Formik>
-      {/* <Navigation title="Submit" destination="creation" /> */}
+      <div id="logo"></div>
+      <div id="terminal">
+        <Heading id="styletitle" title="Signup" />
+        <Formik
+          initialValues={{
+            username: "",
+            password: "",
+          }}
+          validationSchema={signupSchema}
+          onSubmit={handleSignUpSubmit}
+        >
+          {({ values, errors, touched }) => (
+            <Form>
+              <Input
+                title="username"
+                type="text"
+                value={formState.username}
+                placeholder="Your Username"
+                onChange={handleChange}
+              ></Input>
+              {errors.username && touched.username
+                ? console.log(errors.username)
+                : null}
+              <Input
+                title="password"
+                type="password"
+                placeholder="******"
+                value={formState.password}
+                onChange={handleChange}
+              ></Input>
+              {errors.password && touched.password
+                ? console.log(errors.password)
+                : null}
+              <Link to="/creation">
+                <button id="stylesubmit" type="submit">submit</button>
+              </Link>
+            </Form>
+          )}
+        </Formik>
+        {/* <Navigation title="Submit" destination="creation" /> */}
 
-      <Modals label="Support" modalContent={<SupportModalContent />} />
+        <Modals label="support" modalContent={<SupportModalContent />} />
+      </div>
+
     </>
   );
 }

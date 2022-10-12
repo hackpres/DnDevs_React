@@ -72,7 +72,9 @@ Form {
     padding-left: 10px;
 }
 
-Heading {
-    
+#styletitle {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 5px;
 }
+
 

@@ -1,23 +1,76 @@
 body {
-    background-image: url('../img/login.png');
+    background-image: url('../img/backgrounds/landing.jpg');
     background-size: cover !important;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width:100% !important; 
+    /* min-width:100% !important; 
     min-height:100% !important; 
     width:auto; 
     height:auto;
-    position: absolute;
+    position: absolute; */
+}
+
+#root {
+    /* display: flex; */
+    align-items: center;
+    margin: auto;
+    height: 100vh;
+    width: 100vw;
+}
+
+#logo {
+    background-image: url('../img/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 15%;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30%;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column; 
+    align-content: center;
+    justify-content: center;
+    /* border:  solid 5px green; */
 }
 
 #terminal {
     background-image: url('../img/blankterminal.png');
-    background-size: cover;
-    width: 100%;
-    padding: 50%;
+    background-size: contain;
+    margin: auto;
+    height: 60%;
+    width: 80%;
+    background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
-    
+    /* justify-content: left; */
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* margin-top: 50%; */
+    padding-top: 10px;
+    /* border: solid 5px green; */
+    /* position: relative; */
 }
+
+button {
+    display: flex;
+    /* flex-wrap: wrap;
+    flex-direction: row; */
+    position: static;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: rgb(0, 109, 0);
+    border: none;
+    margin-top: 19px;
+    background-size: contain;
+    margin-left: 11px;
+    background-color: rgba(0, 255, 255, 0);
+    /* position: absolute; */
+}
+
+/* #login {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+} */
