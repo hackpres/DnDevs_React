@@ -1,5 +1,6 @@
 import React from 'react';
 import Action from '../components/Buttons/Action';
+import '../assets/css/Battle.css';
 
 function Battle() {
   return (
