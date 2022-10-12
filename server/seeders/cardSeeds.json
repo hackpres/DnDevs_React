@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Espresso Shot",
+        "description": "A developer's life force derives solely from caffeine",
+        "modifier": " ",
+        "codeSnippet": "function esspressoShot(health) {return health += 10}",
+        "shopDescription": "+10 health"
+    },
+    {
+        "name": "Stack Overflow",
+        "description": "Copy and paste someone else's code",
+        "modifier": " ",
+        "codeSnippet": "function stackOverflow(attack) {return attack += 5}",
+        "shopDescription": "+5 attack"
+    },
+    {
+        "name": "Hey there little guy",
+        "description": "Minimize the boss",
+        "modifier": " ",
+        "codeSnippet": "function littleGuy(boss) {return boss.defense -= 5}",
+        "shopDescription": "-5 boss defense"
+    },
+    {
+        "name": "Feeling Pretty Large",
+        "description": "card description",
+        "modifier": " ",
+        "codeSnippet": "function large(defense) {return defense += 5}",
+        "shopDescription": "+5 defense"
+    },
+    {
+        "name": "I Think You're Stupid",
+        "description": "Call the boss stupid. Boss loses 5 health",
+        "modifier": " ",
+        "codeSnippet": "function stupid(boss) {return boss.health -= 5}",
+        "shopDescription": "-5 to boss health"
+    },
+    {
+        "name": "Merge Conflict",
+        "description": "Boss's files failed to merge. Attack twice.",
+        "modifier": " ",
+        "codeSnippet": "function mergeConflict(attack) {return attack += attack}",
+        "shopDescription": "Attack twice"
+    },
+    {
+        "name": "Heels Over Head",
+        "description": "Rotate the boss upside down",
+        "modifier": " ",
+        "codeSnippet": "function heelsOverHead() {<boss style = rotate(180deg)}",
+        "shopDescription": "Rotate the boss upside down"
+    },
+    {
+        "name": "Office Hours",
+        "description": "Stay late and get some extra help. Add 10 to your defense",
+        "modifier": " ",
+        "codeSnippet": "function officeHours(player){player.hours + 10}",
+        "shopDescription": "+10 defense"
+    }
+]
