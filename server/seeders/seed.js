@@ -8,9 +8,9 @@ db.once('open', async () => {
   try {
     await Bosses.deleteMany({});
     await Bosses.create(bossSeeds);
-    await Cards.deleteMant({});
+    await Cards.deleteMany({});
     await Cards.create(cardSeeds);
-    
+
     console.log('all done!');
     process.exit(0);
   } catch (err) {
