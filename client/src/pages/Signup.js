@@ -50,7 +50,8 @@ function Signup() {
 
   return (
     <>
-      <div id="logo"></div>
+    <div id="signup">
+    <div id="logo"></div>
       <div id="terminal">
         <Heading id="styletitle" title="Signup" />
         <Formik
@@ -108,6 +109,7 @@ function Signup() {
 
         <Modals label="support" modalContent={<SupportModalContent />} />
       </div>
+    </div>
     </>
   );
 }

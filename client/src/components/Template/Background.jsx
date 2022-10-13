@@ -1,8 +1,11 @@
 import React from 'react'
 
-function Background() {
+function Background(props) {
   return (
-    <div>Background</div>
+    <div>
+      Background
+      {/* <img src={props.src} alt={props.alt}/> */}
+    </div>
   )
 }
 

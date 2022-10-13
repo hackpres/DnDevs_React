@@ -4,10 +4,13 @@ import '../assets/css/Battle.css';
 
 function Battle() {
   return (
-    <div>
-      <Action label="Select Card"/>
-      <Action label="Play Card"/>
+    <div id="battle">
+<div>
+        <Action label="Select Card" />
+        <Action label="Play Card" />
+      </div>
     </div>
+      
   )
 }
 

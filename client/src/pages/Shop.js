@@ -4,10 +4,11 @@ import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
 import Modals from "../components/Modal/Modals";
 import Nav from "../components/Navigation/Nav";
 import Action from "../components/Buttons/Action";
+import '../assets/css/Shop.css';
 
 function Shop() {
   return (
-    <div>
+    <div id="shop">
       <Modals modalContent={<MainMenuModalContent />} />
       <Heading h="h2" title="Shop" />
       <Nav />
