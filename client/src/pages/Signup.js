@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Heading from "../components/Headings/Heading";
-import { Formik, Form } from "formik";
+import { Formik, Form, Field } from "formik";
 import Input from "../components/Template/Input";
 import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 import signupSchema from "../utils/signupSchema";
 import { Link } from "react-router-dom";
-import '../assets/css/Signup.css';
+import "../assets/css/Signup.css";
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
@@ -64,28 +64,43 @@ function Signup() {
         >
           {({ values, errors, touched }) => (
             <Form>
-              <Input
-                title="username"
-                type="text"
-                value={formState.username}
-                placeholder="Your Username"
-                onChange={handleChange}
-              ></Input>
-              {errors.username && touched.username
-                ? console.log(errors.username)
-                : null}
-              <Input
-                title="password"
-                type="password"
-                placeholder="******"
-                value={formState.password}
-                onChange={handleChange}
-              ></Input>
-              {errors.password && touched.password
-                ? console.log(errors.password)
-                : null}
+              <div>
+                <Field
+                  id="username"
+                  type="text"
+                  className="username formField"
+                  name="username"
+                  // value={formState.username}
+                  placeholder="Your Username"
+                  // onChange={handleChange}
+                ></Field>
+
+                {errors.username && touched.username
+                  ? console.log(errors.username)
+                  : null}
+              </div>
+              <div>
+                <Field
+                  type="password"
+                  id="password"
+                  className="password formField"
+                  name="password"
+                  placeholder="*******"
+                  // value={formState.password}
+                  // onChange={handleChange}
+                ></Field>
+                {errors.password && touched.password
+                  ? console.log(errors.password)
+                  : null}
+              </div>
               <Link to="/creation">
-                <button id="stylesubmit" type="submit">submit</button>
+                <button
+                  id="stylesubmit"
+                  type="submit"
+                  onSubmit={handleSignUpSubmit}
+                >
+                  submit
+                </button>
               </Link>
             </Form>
           )}
@@ -95,8 +110,6 @@ function Signup() {
         <Modals label="support" modalContent={<SupportModalContent />} />
       </div>
     </div>
-      
-
     </>
   );
 }

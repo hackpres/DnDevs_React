@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Merge Conflict",
+        "description": "Boss's files failed to merge. Attack twice.",
+        "modifier": " ",
+        "codeSnippet": "function mergeConflict(attack) {return attack += attack}",
+        "shopDescription": "Attack twice"
+    },
+    {
+        "name": "Heels Over Head",
+        "description": "Rotate the boss upside down",
+        "modifier": " ",
+        "codeSnippet": "function heelsOverHead() {<boss style = rotate(180deg)}",
+        "shopDescription": "Rotate the boss upside down"
+    },
+    {
+        "name": "Office Hours",
+        "description": "Stay late and get some extra help. Add 10 to your defense",
+        "modifier": " ",
+        "codeSnippet": "function officeHours(player){player.hours + 10}",
+        "shopDescription": "+10 defense"
+    }
+   
+]
