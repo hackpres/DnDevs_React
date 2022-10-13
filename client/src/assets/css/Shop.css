@@ -5,8 +5,8 @@
     width: 100vw;
 }
 
-#battle {
-    background-image: url('../img/backgrounds/battle1.gif');
+#shop {
+    background-image: url('../img/backgrounds/shopandcode.jpg');
     background-size: cover !important;
     background-repeat: no-repeat;
     height: 100vh;
@@ -17,4 +17,16 @@
     align-items: center;
     justify-content: center; 
     flex-direction: column;
+}
+
+button {
+    display: flex;
+    position: static;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: rgb(0, 109, 0);
+    border: none;
+    margin-top: 19px;
+    background-size: contain;
+    margin-left: 11px;
+    background-color: rgba(0, 255, 255, 0);
 }
