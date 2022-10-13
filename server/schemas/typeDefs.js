@@ -14,6 +14,8 @@ const typeDefs = gql`
     name: String!
     description: String!
     modifier: String!
+    codeSnippet: String!
+    shopDescription: String!
   }
   type Auth {
     token: ID!
@@ -28,6 +30,8 @@ const typeDefs = gql`
     name: String!
     description: String!
     modifier: String!
+    codeSnippet: String!
+    shopDescription: String!
   }
   type Query {
     me: User

@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Espresso Shot",
+        "description": "A developer's life force derives solely from caffeine",
+        "modifier": " ",
+        "codeSnippet": "function esspressoShot(health) {return health += 10}",
+        "shopDescription": "+10 health"
+    },
+    {
+        "name": "Stack Overflow",
+        "description": "Copy and paste someone else's code",
+        "modifier": " ",
+        "codeSnippet": "function stackOverflow(attack) {return attack += 5}",
+        "shopDescription": "+5 attack"
+    },
+    {
+        "name": "Hey there little guy",
+        "description": "Minimize the boss",
+        "modifier": " ",
+        "codeSnippet": "function littleGuy(boss) {return boss.defense -= 5}",
+        "shopDescription": "-5 boss defense"
+    },
+    {
+        "name": "Feeling Pretty Large",
+        "description": "card description",
+        "modifier": " ",
+        "codeSnippet": "function large(defense) {return defense += 5}",
+        "shopDescription": "+5 defense"
+    },
+    {
+        "name": "I Think You're Stupid",
+        "description": "Call the boss stupid. Boss loses 5 health",
+        "modifier": " ",
+        "codeSnippet": "function stupid(boss) {return boss.health -= 5}",
+        "shopDescription": "-5 to boss health"
+    }
+    
+]
