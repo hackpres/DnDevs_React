@@ -14,6 +14,14 @@ const cardSchema = new Schema(
     modifier:{
       type: String,
       required: true,
+    },
+    codeSnippet:{
+      type: String,
+      required: true
+    },
+    shopDescription:{
+      type: String,
+      required: true
     }
   
   },
@@ -25,6 +33,6 @@ const cardSchema = new Schema(
   // }
 );
 
-// const Cards = model("Cards", cardSchema);
+const Cards = model("Cards", cardSchema);
 
-module.exports = cardSchema;
+module.exports = Cards;

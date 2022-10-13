@@ -23,7 +23,7 @@ const userSchema = new Schema(
         type:Number,
         default: 100,
     },
-    savedCards: [cardSchema], 
+    savedCards: [], 
   },
   // {
   //   toJSON: {
