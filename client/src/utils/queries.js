@@ -39,3 +39,13 @@ query Me {
     }
   }
 `;
+
+export const QUERY_CARDS = gql`
+query Users {
+  users {
+    savedCards {
+      name
+    }
+  }
+}
+`;
