@@ -5,8 +5,8 @@
     width: 100vw;
 }
 
-#battle {
-    background-image: url('../img/backgrounds/battle1.gif');
+#home {
+    background-image: url('../img/backgrounds/home.png');
     background-size: cover !important;
     background-repeat: no-repeat;
     height: 100vh;

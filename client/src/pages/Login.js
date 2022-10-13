@@ -15,7 +15,8 @@ function Login() {
   };
   return (
     <>
-      <div id="logo"></div>
+    <div id="login">
+    <div id="logo"></div>
       <div id="terminal">
       <Heading id="styletitle" title="login" />
         <Formik
@@ -48,6 +49,8 @@ function Login() {
         </Formik>
         <Modals label="support" modalContent={<SupportModalContent />} />
       </div>
+    </div>
+      
 
     </>
   );
