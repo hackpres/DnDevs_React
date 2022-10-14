@@ -1,19 +1,19 @@
 import { QUERY_CARDS } from './queries';
 import { useQuery } from '@apollo/client';
-import CodeCard from '../components/Graphics/CodeCard';
+import BattleCard from '../components/Graphics/BattleCard';
 
-export default function CodeCards() {
+export default function BattleCards() {
     const { loading, error, data } = useQuery(QUERY_CARDS);
-    
+
     if (loading) return `Loading...`;
     if (error) return `Error! ${error.message}`;
 
     return (
         <>
             {data.me.savedCards.map((card) => (
-                <CodeCard title={card.name} description={card.description} snippet={card.codeSnippet} shopDescription={card.shopDescription} />
+                <BattleCard name={card.name} description={card.description} />
             ))}
             {console.log(data)}
         </>
     )
-};
+}
