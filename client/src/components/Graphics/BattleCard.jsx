@@ -1,11 +1,12 @@
 import React from 'react';
 import CodeCard from './CodeCard';
+import Text from '../Template/Text';
 
-function BattleCard() {
+function BattleCard(props) {
   return (
     <>
-      <CodeCard>
-        
+      <CodeCard h='h3' title={props.name}>
+        <Text content={props.content} />
       </CodeCard>
     </>
   )

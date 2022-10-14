@@ -42,9 +42,13 @@ query Me {
 
 export const QUERY_CARDS = gql`
 query Users {
-  users {
+  me {
     savedCards {
       name
+      description
+      modifier
+      codeSnippet
+      shopDescription
     }
   }
 }

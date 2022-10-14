@@ -1,7 +1,8 @@
 import React from 'react';
 import Heading from '../Headings/Heading';
 import styled from 'styled-components';
-import background from '../../assets/img/blankterminal.png'
+import background from '../../assets/img/blankterminal.png';
+import Text from '../Template/Text';
 
 const CardsParent = styled.div`
   display: grid;
@@ -24,6 +25,9 @@ function CodeCard(props) {
     <CardsParent>
       <CardContainer>
         <Heading h="h3" title={props.title} />
+        <Text content={props.description} />
+        <Text content={props.snippet} />
+        <Text content={props.shopDescription} />
       </CardContainer>
     </CardsParent>
   )

@@ -22,7 +22,7 @@
     },
     {
         "name": "Feeling Pretty Large",
-        "description": "card description",
+        "description": "The feeling of a good refactor. Grow 1.5x",
         "modifier": " ",
         "codeSnippet": "function large(defense) {return defense += 5}",
         "shopDescription": "+5 defense"
