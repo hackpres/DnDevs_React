@@ -4,6 +4,7 @@ import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
 import Modals from "../components/Modal/Modals";
 import Nav from "../components/Navigation/Nav";
 import printCodeCards from '../utils/printCodeCards';
+import '../assets/css/Nav.css';
 
 function Code() {
   return (
@@ -11,7 +12,9 @@ function Code() {
       <Modals modalContent={<MainMenuModalContent />} />
       <Heading h="h2" title="Code Snippets" />
       {printCodeCards()}
-      <Nav />
+      <div id="navbar">
+        <Nav />
+      </div>
     </div>
   );
 }
