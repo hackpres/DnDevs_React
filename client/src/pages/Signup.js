@@ -7,6 +7,7 @@ import signupSchema from "../utils/signupSchema";
 import { Link } from "react-router-dom";
 import "../assets/css/Signup.css";
 
+//imports needed for adding user to database
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
