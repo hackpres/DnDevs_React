@@ -5,6 +5,7 @@ import Nav from "../components/Navigation/Nav";
 import Modals from "../components/Modal/Modals";
 import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
 import '../assets/css/Home.css';
+import '../assets/css/Nav.css';
 
 function Home() {
   return (
@@ -13,7 +14,9 @@ function Home() {
         <Modals modalContent={<MainMenuModalContent />} />
         <Heading h="h2" title="Home" />
         <Navigation title="Battle" destination="battle" />
+        <div id="navbar">
         <Nav></Nav>
+        </div>
       </div>
     </>
   );
