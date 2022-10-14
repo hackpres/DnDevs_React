@@ -7,7 +7,14 @@ import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
 
+//imports needed for updating character gender
+import { useMutation } from "@apollo/client";
+import { ADD_GENDER } from "../utils/mutations";
+import Auth from "../utils/auth";
+
+
 function CharacterCreation() {
+
   const validateName = () => {};
   return (
     <>

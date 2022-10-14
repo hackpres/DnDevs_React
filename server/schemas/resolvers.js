@@ -7,9 +7,9 @@ const resolvers = {
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({
-            _id: context.user._id,
-          })
-          // .select("-__v -password");
+          _id: context.user._id,
+        });
+        // .select("-__v -password");
 
         // return userData;
       }
@@ -28,9 +28,9 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, args) => {
-      const user = await User.create({...args, savedCards: starterCards});
+      const user = await User.create({ ...args, savedCards: starterCards });
       const token = signToken(user);
-      
+
       return { token, user };
     },
     login: async (parent, { username, password }) => {
@@ -64,6 +64,16 @@ const resolvers = {
     },
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
+    },
+    addGender: async (parent, { userId, gender }) => {
+      return User.findOneAndUpdate(
+        { _id: userId },
+        { $set: { gender: gender } },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     },
   },
 };

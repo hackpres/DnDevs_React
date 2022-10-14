@@ -36,3 +36,15 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_GENDER = gql`
+mutation AddGender($userId: ID!, $gender: String!) {
+  addGender(userId: $userId, gender: $gender) {
+    username
+    gender
+  }
+}
+
+
+
+`

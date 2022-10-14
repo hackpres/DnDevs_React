@@ -31,6 +31,9 @@ const userSchema = new Schema(
         type:Number,
         default: 100,
     },
+    gender:{
+      type: String
+    },
     savedCards: [], 
   },
   // {
