@@ -8,10 +8,18 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      min: [3, 'Must be at least 3 characters long']
     },
     password: {
       type: String,
       required: true,
+      validate: {
+        validator: function(v) {
+          return /^(?=.*\d{1})(?=.*[a-z]{1})(?=.*[A-Z]{1})(?=.*[!@#$%^&*{|}?~_=+.-]{1})(?=.*[^a-zA-Z0-9])(?!.*\s).{8,32}$/.test(v);
+        },
+        message: props => `${props.value} is not a valid password!`
+      },
+      required: [true, 'Password required']
     },
     attack:{
         type: Number
@@ -22,6 +30,9 @@ const userSchema = new Schema(
     health:{
         type:Number,
         default: 100,
+    },
+    gender:{
+      type: String
     },
     savedCards: [], 
   },

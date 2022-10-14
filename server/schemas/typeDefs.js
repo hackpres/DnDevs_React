@@ -7,6 +7,7 @@ const typeDefs = gql`
     attack: Int
     defense: Int
     health: Int
+    gender: String
   }
 
   type Card {
@@ -45,6 +46,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addCard(userId: ID!, card: CardInput!): User
     removeUser(userId: ID!): User
+    addGender(userId: ID!, gender: String!): User
   }
 `;
 
