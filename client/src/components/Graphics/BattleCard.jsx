@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import CodeCard from './CodeCard';
 
 function BattleCard() {
   return (
-    <div>BattleCard</div>
+    <>
+      <CodeCard>
+        
+      </CodeCard>
+    </>
   )
 }
 
