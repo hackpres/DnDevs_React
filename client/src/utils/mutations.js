@@ -38,13 +38,19 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_GENDER = gql`
-mutation AddGender($userId: ID!, $gender: String!) {
-  addGender(userId: $userId, gender: $gender) {
+  mutation AddGender($userId: ID!, $gender: String!) {
+    addGender(userId: $userId, gender: $gender) {
+      username
+      gender
+    }
+  }
+`;
+
+export const CHANGE_AVATAR = gql`
+mutation ChangeAvatar($avatar: String!) {
+  changeAvatar(avatar: $avatar) {
     username
-    gender
+    avatar
   }
 }
-
-
-
-`
+`;

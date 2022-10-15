@@ -28,7 +28,7 @@
 }
 
 .home  {
-    background-image: url('../img/icons/map.png');
+    background-image: url('../img/icons/Map.png');
     background-repeat: no-repeat;
     background-size: 100%;
     height: 50px;
@@ -43,7 +43,7 @@
 }
 
 .code  {
-    background-image: url('../img/icons/bag.png');
+    background-image: url('../img/icons/Bag.png');
     background-repeat: no-repeat;
     background-size: 100%;
     height: 50px;
@@ -58,7 +58,7 @@
 }
 
 .profile  {
-    background-image: url('../img/icons/helmet.png');
+    background-image: url('../img/icons/Helmet.png');
     background-repeat: no-repeat;
     background-size: 100%;
     height: 50px;

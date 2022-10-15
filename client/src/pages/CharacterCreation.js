@@ -12,14 +12,13 @@ import { useMutation, useQuery } from "@apollo/client";
 import { ADD_GENDER } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
-import { useParams } from "react-router-dom";
+
 
 function CharacterCreation() {
   const [gender, setGender] = useState("");
 
   const { loading, error, data } = useQuery(QUERY_ME);
   const [addGender] = useMutation(ADD_GENDER);
-  const validateName = () => {};
   const handleChange = (event) => {
     const { name, value } = event.target;
 

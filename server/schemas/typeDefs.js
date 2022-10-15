@@ -8,6 +8,7 @@ const typeDefs = gql`
     defense: Int
     health: Int
     gender: String
+    avatar: String
   }
 
   type Card {
@@ -47,6 +48,7 @@ const typeDefs = gql`
     addCard(userId: ID!, card: CardInput!): User
     removeUser(userId: ID!): User
     addGender(userId: ID!, gender: String!): User
+    changeAvatar(avatar: String!): User
   }
 `;
 
