@@ -75,6 +75,19 @@ const resolvers = {
         }
       );
     },
+    changeAvatar: async (parent, { avatar}, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { avatar: avatar } },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+      throw new AuthenticationError("Not Logged In");
+    },
   },
 };
 
