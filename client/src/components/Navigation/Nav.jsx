@@ -1,7 +1,4 @@
 import React from 'react'
-import NavIcon from './NavIcon'
-import NavScroll from './NavScroll'
-import NavText from './NavText'
 import Navigation from '../Buttons/Navigation'
 import '../../assets/css/Nav.css'
 

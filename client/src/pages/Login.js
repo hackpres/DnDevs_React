@@ -54,12 +54,12 @@ const Login = (props) => {
         <div id= 'login'>
             <div id='logo'></div>
             <div id='terminal'>
-                <Heading id='styletitle' title='Login'/>
+                <Heading id='styletitle' title='login'/>
                 <form onSubmit={handleFormSubmit}>
                     <div>
                     <input 
                     className = "username form-input"
-                    placeholder="Username"
+                    placeholder="username"
                     id='username'
                     name='username'
                     type='text'
@@ -80,7 +80,7 @@ const Login = (props) => {
                     </div>
                     
                         <button id='stylesubmit'
-                        type='submit'>Submit</button>
+                        type='submit'>submit></button>
 
                     
                 </form>
