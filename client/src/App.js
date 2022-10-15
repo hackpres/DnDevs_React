@@ -44,6 +44,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <GlobalStyle />

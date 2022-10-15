@@ -2,7 +2,7 @@ import {gql} from '@apollo/client';
 
 export const QUERY_PROFILES = gql`
 
-query Users {
+query users {
     users {
       _id
       username
@@ -14,7 +14,7 @@ query Users {
   }
 `;
 export const QUERY_SINGLE_USER = gql`
-query User($userId: ID!) {
+query user($userId: ID!) {
     user(userId: $userId) {
       _id
       username
@@ -28,23 +28,23 @@ query User($userId: ID!) {
 
 
 export const QUERY_ME = gql`
-query Me {
-    me {
-      _id
-      username
-      savedCards {
-        _id
-        name
-      }
-    }
+query User {
+  me {
+    _id
+    username
   }
+}
 `;
 
 export const QUERY_CARDS = gql`
 query Users {
-  users {
+  me {
     savedCards {
       name
+      description
+      modifier
+      codeSnippet
+      shopDescription
     }
   }
 }
