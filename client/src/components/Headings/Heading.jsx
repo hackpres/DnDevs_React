@@ -1,5 +1,5 @@
-// make h1/h2/h3
 import React from "react";
+import "../../assets/css/Heading.css";
 
 function Heading(props) {
   function getHeadingElement() {switch (props.h) {

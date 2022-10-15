@@ -1,0 +1,10 @@
+#avatar {
+    background-image: url('../sprites/user/warrioridle.png');
+    background-repeat: no-repeat;
+    background-size: 600%;
+    height: 100px;
+    width: 90px;
+    overflow: hidden;
+    /* transform-origin:  */
+    border: solid 2px rgb(255, 0, 0);
+}
