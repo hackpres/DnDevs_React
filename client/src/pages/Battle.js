@@ -9,6 +9,10 @@ import Healthbar from '../components/Graphics/Healthbar';
 import { useEffect, useState } from 'react';
 import { QUERY_CARDS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
+import randNum from '../utils/randomNum';
+import RenderCard from '../utils/RenderCard';
+import BattleCard from '../components/Graphics/BattleCard';
+import playCard from '../utils/playCard';
 
 const BattleLog = styled.div`
   display: flex;
@@ -30,56 +34,96 @@ const Row = styled.div`
 const Col = styled.div`
   flex: 1;
 `;
-let cardsFromDB = [];
+const Play = styled.button`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: black;
+  font-size: 1.25rem;
+  color: white;
+  padding: .5rem 1.25rem;
+  border-radius: .25rem;
+`;
+const battleCardStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
 function Battle() {
-  const [cardDeck, setCardDeck] = useState([]);
   const [playerHP, setPlayerHP] = useState(100);
   const [bossHP, setBossHP] = useState(100);
+  const [cardIndex, setCardIndex] = useState();
+  const [cards, setCards] = useState([]);
+  const { data } = useQuery(QUERY_CARDS);
 
-  function QueryCards() {
-    const { loading, error, data } = useQuery(QUERY_CARDS);
-    
-    if (loading) return `Loading...`;
-    if (error) return `Error! ${error.message}`;
-    
-    data.me.savedCards.map((card) => (
-        cardsFromDB.push(card)
-    ));
-  }
   useEffect(() => {
-      setCardDeck(cardsFromDB)
-  }, []);
-  QueryCards();
-  console.log(cardDeck)
+    console.log(data);
+    if (!cards.length && data) {
+      let cardIndexes = [];
+      for (let index = 0; index < 3; index++) {
+        cardIndexes.push(randNum(data.me.savedCards.length, cardIndexes));
+      }
+      setCards(cardIndexes);
+      console.log(cards)
+    }
+    console.log(cardIndex);
+  }, [data, cardIndex]);
 
   return (
-      <div id="battle">
-        <div>
-          <Modals modalContent={<MainMenuModalContent />} />
-          <BattleLog>
-            {/* {function to print log text} */}
-            <p>Player hit Boss for 5 damage</p>
-          </BattleLog>
-          <Row>
-            <Col>
-              <Avatar />
-            </Col>
-            <Col>
-              <Avatar />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Healthbar health={playerHP} />
-            </Col>
-            <Col>
-              <Healthbar health={bossHP} />
-            </Col>
-          </Row>
-          <Action label="Select Card" />
-          <Action label="Play Card" />
-        </div>
+    <div id="battle">
+      <div>
+        <Modals modalContent={<MainMenuModalContent />} />
+        <BattleLog>
+          {/* {function to print log text} */}
+          <p>Player hit Boss for 5 damage</p>
+        </BattleLog>
+        <Row>
+          <Col>
+            <Avatar />
+          </Col>
+          <Col>
+            <Avatar />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Healthbar health={playerHP} />
+          </Col>
+          <Col>
+            <Healthbar health={bossHP} />
+          </Col>
+        </Row>
+
+        <BattleCard >
+          {
+            cards.length && data ?
+              cards.map((index, key) => {
+                return <RenderCard
+                  key={key}
+                  selected={index === cardIndex ? true : false}
+                  onClick={() => setCardIndex(index)}
+                  deck={data.me.savedCards}
+                  index={index} />
+              }) :
+              null
+          }
+          {cardIndex >= 0 ?
+            <div style={battleCardStyle}>
+              <Play
+                onClick={() => {
+                  let cardEffects = (playCard(data.me.savedCards[cardIndex], bossHP, playerHP));
+                  setBossHP(cardEffects.bossHealth);
+                  setPlayerHP(cardEffects.playerHealth);
+                }}>
+                Commit Code
+              </Play>
+            </div> : null
+          }
+
+        </BattleCard>
       </div>
+    </div>
   )
 }
 
