@@ -1,3 +1,10 @@
+#root {
+    align-items: center;
+    margin: auto;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
 #navbar {
     overflow: hidden;
     position: fixed;
@@ -25,6 +32,7 @@
     border: solid 2px gray;
     border-radius: 3px;
     margin-top: 7px;
+    padding-bottom: 25px;
     text-decoration: none;
 }
 
@@ -72,3 +80,10 @@
     border-radius: 3px;
     margin-top: 7px;
 }
+
+/* .format {
+    position: fixed;
+    bottom: 25px;
+    margin-left: -20px;
+    color: white !important;
+} */

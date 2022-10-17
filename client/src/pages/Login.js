@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Heading from "../components/Headings/Heading";
 import { Formik, Field, Form } from "formik";
 // import Input from "../components/Template/Input";
@@ -9,7 +9,7 @@ import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../assets/css/Login.css";
 
 const Login = (props) => {
@@ -51,49 +51,51 @@ const Login = (props) => {
 
   return (
     <>
-        <div id= 'login'>
-            <div id='logo'></div>
-            <div id='terminal'>
-                <Heading id='styletitle' title='login'/>
-                <form onSubmit={handleFormSubmit}>
-                    <div>
-                    <input 
-                    className = "username form-input"
-                    placeholder="username"
-                    id='username'
-                    name='username'
-                    type='text'
-                    value = {formState.username}
-                    onChange = {handleChange}
-                    />
-                    </div>
-                    <div>    
-                    <input
-                    type="password"
-                    id="password"
-                    className="password form-input"
-                    name="password"
-                    placeholder="*******"
-                    value = {formState.password}
-                    onChange = {handleChange}
-                    />
-                    </div>
-                    
-                        <button id='stylesubmit'
-                        type='submit'>submit></button>
-
-                    
-                </form>
-
-
-
-
-
+      <div id='login'>
+        <div id='logo'></div>
+        <div id='terminal'>
+          <Heading id='styletitle' h="h1" title='login' />
+          <form onSubmit={handleFormSubmit}>
+            <div>
+              <input
+                className="username form-input"
+                placeholder="username"
+                id='username'
+                name='username'
+                type='text'
+                value={formState.username}
+                onChange={handleChange}
+              />
             </div>
+            <div>
+              <input
+                type="password"
+                id="password"
+                className="password form-input"
+                name="password"
+                placeholder="*******"
+                value={formState.password}
+                onChange={handleChange}
+              />
+            </div>
+            <button id='stylesubmit'
+              type='submit'
+            >
+              submit
+            </button>
+
+
+          </form>
+
+
+
+
+
         </div>
-    
-    
-    
+      </div>
+
+
+
     </>
   )
 }

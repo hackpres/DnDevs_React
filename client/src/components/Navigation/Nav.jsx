@@ -1,12 +1,13 @@
 import React from 'react'
 import Navigation from '../Buttons/Navigation'
 import '../../assets/css/Nav.css'
+import '../../assets/css/Heading.css'
 
 function Nav() {
   return (
     <>
-      <div className="shop">
-        <Navigation title="Shop" destination="shop" />
+    <div className="shop">
+        <Navigation className="format" title="Shop" h="h4" destination="shop" />
       </div>
       <div className="home">
         <Navigation title="Home" destination="home" />
