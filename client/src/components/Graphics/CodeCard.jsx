@@ -22,7 +22,7 @@ const CardContainer = styled.div`
 
 function CodeCard(props) {
   return (
-    <CardsParent>
+    <CardsParent {...props}>
       <CardContainer>
         <Heading h="h3" title={props.title} />
         <Text content={props.description} />
