@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Heading from "../components/Headings/Heading";
 import { Formik, Field, Form } from "formik";
 // import Input from "../components/Template/Input";
@@ -36,7 +36,8 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
-      document.location.replace("/home");
+      <Link to="/home" />
+      // document.location.replace("/home");
     } catch (e) {
       console.error(e);
     }
@@ -51,49 +52,51 @@ const Login = (props) => {
 
   return (
     <>
-        <div id= 'login'>
-            <div id='logo'></div>
-            <div id='terminal'>
-                <Heading id='styletitle' h="h1" title='login'/>
-                <form onSubmit={handleFormSubmit}>
-                    <div>
-                    <input 
-                    className = "username form-input"
-                    placeholder="username"
-                    id='username'
-                    name='username'
-                    type='text'
-                    value = {formState.username}
-                    onChange = {handleChange}
-                    />
-                    </div>
-                    <div>    
-                    <input
-                    type="password"
-                    id="password"
-                    className="password form-input"
-                    name="password"
-                    placeholder="*******"
-                    value = {formState.password}
-                    onChange = {handleChange}
-                    />
-                    </div>
-                    
-                        <button id='stylesubmit'
-                        type='submit'>submit></button>
-
-                    
-                </form>
-
-
-
-
-
+      <div id='login'>
+        <div id='logo'></div>
+        <div id='terminal'>
+          <Heading id='styletitle' h="h1" title='login' />
+          <form onSubmit={handleFormSubmit}>
+            <div>
+              <input
+                className="username form-input"
+                placeholder="username"
+                id='username'
+                name='username'
+                type='text'
+                value={formState.username}
+                onChange={handleChange}
+              />
             </div>
+            <div>
+              <input
+                type="password"
+                id="password"
+                className="password form-input"
+                name="password"
+                placeholder="*******"
+                value={formState.password}
+                onChange={handleChange}
+              />
+            </div>
+            <button id='stylesubmit'
+              type='submit'
+            >
+              submit
+            </button>
+
+
+          </form>
+
+
+
+
+
         </div>
-    
-    
-    
+      </div>
+
+
+
     </>
   )
 }
