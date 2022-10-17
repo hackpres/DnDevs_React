@@ -6,6 +6,7 @@ import Text from "../components/Template/Text";
 import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
+import '../assets/css/Creation.css';
 
 //imports needed for updating character gender
 import { useMutation, useQuery } from "@apollo/client";
@@ -41,31 +42,32 @@ function CharacterCreation() {
 
   return (
     <>
-      <Modals modalContent={<MainMenuModalContent />} />
-      <Heading title="charName" />
+      <div id="creation">
+        <Modals modalContent={<MainMenuModalContent />} />
+        <Heading title="charName" h="h3"/>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            name="gender"
-            type="radio"
-            title="Male"
-            value="male"
-            onChange={handleChange}
-          ></input>
-          Male
-          <input
-            name="gender"
-            type="radio"
-            title="Female"
-            value="female"
-            onChange={handleChange}
-          ></input>
-          Female
-        </div>
-        <div></div>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input
+              name="gender"
+              type="radio"
+              title="Male"
+              value="male"
+              onChange={handleChange}
+            ></input>
+            Male
+            <input
+              name="gender"
+              type="radio"
+              title="Female"
+              value="female"
+              onChange={handleChange}
+            ></input>
+            Female
+          </div>
+          <div></div>
 
-        {/* <Formik>
+          {/* <Formik>
         <Form>
           <Input title="character name" validate={validateName}></Input>
           <div role="group" aria-labelledby="my-radio-group">
@@ -81,7 +83,7 @@ function CharacterCreation() {
         </Form>
       </Formik> */}
 
-        {/* <Heading title="Attributes" />
+          {/* <Heading title="Attributes" />
       <ul>
         <li>
           <Text content="Hiiiiiiiiii feed me now." />
@@ -93,9 +95,11 @@ function CharacterCreation() {
           <Text content="Nyaa nyaa reaches under door into adjacent room for stand in doorway, unwilling to chose whether to stay in or go out slap the dog because cats rule meow" />
         </li>
       </ul> */}
-        {/* <Navigation title="Create" destination="home" /> */}
-        <button type="submit">Create</button>
-      </form>
+          {/* <Navigation title="Create" destination="home" /> */}
+          <button id="styling" type="submit">Create</button>
+        </form>
+      </div>
+
     </>
   );
 }

@@ -17,10 +17,8 @@ function Home() {
           <Heading h="h2" title="Home" />
         </div>
         <Avatar />
-        {/* put battle somewhere back on the page here */}
-
-        <div id="navbar">
         <Navigation title="Battle" destination="battle" />
+        <div id="navbar">
           <Nav></Nav>
         </div>
       </div>

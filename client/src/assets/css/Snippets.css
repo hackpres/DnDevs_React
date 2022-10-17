@@ -1,0 +1,27 @@
+#snippets {
+    background-image: url('../img/backgrounds/shopandcode.jpg');
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column; */
+}
+
+#terminal {
+    background-image: url('../img/blankterminal.png');
+    background-size: contain;
+    margin: auto;
+    height: 60%;
+    width: 80%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-top: 10px;
+}

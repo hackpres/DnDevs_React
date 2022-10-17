@@ -8,6 +8,7 @@
     background-image: url('../img/backgrounds/home.png');
     background-size: cover !important;
     background-repeat: no-repeat;
+    color: white;
     height: 100vh;
     width: 100vw;
     margin: 0;

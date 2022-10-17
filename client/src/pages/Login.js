@@ -54,7 +54,7 @@ const Login = (props) => {
         <div id= 'login'>
             <div id='logo'></div>
             <div id='terminal'>
-                <Heading id='styletitle' title='login'/>
+                <Heading id='styletitle' h="h1" title='login'/>
                 <form onSubmit={handleFormSubmit}>
                     <div>
                     <input 
