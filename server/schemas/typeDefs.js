@@ -16,6 +16,8 @@ const typeDefs = gql`
     name: String!
     description: String!
     modifier: String!
+    value: Int!
+    value2: Int
     codeSnippet: String!
     shopDescription: String!
   }
@@ -32,6 +34,8 @@ const typeDefs = gql`
     name: String!
     description: String!
     modifier: String!
+    value: Int!
+    value2: Int
     codeSnippet: String!
     shopDescription: String!
   }
