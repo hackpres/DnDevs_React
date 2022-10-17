@@ -20,7 +20,7 @@
 }
 
 #logo {
-    background-image: url('../img/logo.png');
+    background-image: url('../img/logo3.png');
     background-size: contain;
     background-repeat: no-repeat;
     height: 15%;
@@ -52,7 +52,7 @@ button {
     display: flex;
     position: static;
     font-family: 'Noto Sans JP', sans-serif;
-    color: rgb(0, 109, 0);
+    color: rgb(0, 82, 0);
     border: none;
     margin-top: 19px;
     background-size: contain;

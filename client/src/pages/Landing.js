@@ -11,9 +11,9 @@ function Landing() {
     <div id="landing">
     <div id="logo"></div>
       <div id="terminal">
-        <Navigation title="login" destination="login" id="login"/>
-        <Navigation title="signup" destination="signup" id="signup"/>
-        <Modals label="support" afterOpen={afterOpenModal()} modalContent={<SupportModalContent />} id="support"/>
+        <Navigation title="login>" destination="login" id="login"/>
+        <Navigation title="signup>" destination="signup" id="signup"/>
+        <Modals label="support>" afterOpen={afterOpenModal()} modalContent={<SupportModalContent />} id="support"/>
       </div>
     </div>
       

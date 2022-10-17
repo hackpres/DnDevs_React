@@ -51,12 +51,12 @@ const Signup = () =>{
             <div id= 'signup'>
                 <div id='logo'></div>
                 <div id='terminal'>
-                    <Heading id='styletitle' title='Signup'/>
+                    <Heading id='styletitle' title='signup'/>
                     <form onSubmit={handleSignUpSubmit}>
                         <div>
                         <input 
                         className = "username form-input"
-                        placeholder="Username"
+                        placeholder="username"
                         id='username'
                         name='username'
                         type='text'
@@ -77,7 +77,7 @@ const Signup = () =>{
                         </div>
                         
                             <button id='stylesubmit'
-                            type='submit'>Submit</button>
+                            type='submit'>submit></button>
 
                         
                     </form>

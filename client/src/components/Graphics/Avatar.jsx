@@ -1,8 +1,9 @@
 import React from 'react'
+import '../../assets/css/Avatar.css'
 
 function Avatar() {
   return (
-    <div>Avatar</div>
+    <div id="avatar"></div>
   )
 }
 
