@@ -21,7 +21,7 @@ function Shop() {
   return (
     <div id="shop">
       <Modals modalContent={<MainMenuModalContent />} />
-      <Heading h="h2" title="Shop" />
+      <Heading h="h3" title="Shop" />
       <div id="navbar">
         <Nav />
       </div>

@@ -51,7 +51,7 @@ const Signup = () =>{
             <div id= 'signup'>
                 <div id='logo'></div>
                 <div id='terminal'>
-                    <Heading id='styletitle' title='signup'/>
+                    <Heading id='styletitle' h="h1" title='signup'/>
                     <form onSubmit={handleSignUpSubmit}>
                         <div>
                         <input 
