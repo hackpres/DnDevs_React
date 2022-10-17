@@ -50,15 +50,15 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/code" element={<Code />} />
-        <Route path="/battle" element={<Battle />} />
-        <Route path="/creation" element={<Creation />} />
+        <Route path="home" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="menu" element={<Menu />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="code" element={<Code />} />
+        <Route path="battle" element={<Battle />} />
+        <Route path="creation" element={<Creation />} />
       </Routes>
     </ApolloProvider>
   );

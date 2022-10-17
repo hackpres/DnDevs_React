@@ -24,7 +24,7 @@ function Modals(props) {
       <Menu label={props.label} openModal={openModal} />
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={props.afterOpen}
+        afterOpen={props.afterOpen}
         onRequestClose={closeModal}
       >
         {props.modalContent}

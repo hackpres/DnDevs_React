@@ -12,8 +12,8 @@ export default function CodeCards() {
     return (
         <>
             <div id="terminal">
-                {data.me.savedCards.map((card) => (
-                    <CodeCard title={card.name} description={card.description} snippet={card.codeSnippet} shopDescription={card.shopDescription} />
+                {data.me.savedCards.map((card, key) => (
+                    <CodeCard key={key} title={card.name} description={card.description} snippet={card.codeSnippet} shopDescription={card.shopDescription} />
                 ))}
                 {console.log(data)}
             </div>

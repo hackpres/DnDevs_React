@@ -9,7 +9,7 @@ import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../assets/css/Login.css";
 
 const Login = (props) => {
@@ -36,8 +36,7 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
-      <Link to="/home" />
-      // document.location.replace("/home");
+      document.location.replace("/home");
     } catch (e) {
       console.error(e);
     }
