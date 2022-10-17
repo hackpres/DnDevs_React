@@ -9,7 +9,7 @@
     },
     {
         "name": "C⅏rrupt Ⅎil∃s",
-        "description": "The bosses opens a corrupt file and loses 8 health",
+        "description": "The boss opens a corrupt file and loses 8 health",
         "modifier": "-",
         "codeSnippet": "ERROR_FILE_CORRUPT",
         "shopDescription": "-8 to boss health"
