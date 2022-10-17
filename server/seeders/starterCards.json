@@ -2,37 +2,66 @@
     {
         "name": "Espresso Shot",
         "description": "A developer's life force derives solely from caffeine",
-        "modifier": " ",
+        "modifier": "+",
+        "value": [10],
         "codeSnippet": "function esspressoShot(health) {return health += 10}",
         "shopDescription": "+10 health"
     },
     {
         "name": "Stack Overflow",
         "description": "Copy and paste someone else's code",
-        "modifier": " ",
-        "codeSnippet": "function stackOverflow(attack) {return attack += 5}",
-        "shopDescription": "+5 attack"
+        "modifier": "-",
+        "value": [6],
+        "codeSnippet": "const stackOverflow = () => return bossHealth -= 6",
+        "shopDescription": "-6 boss health"
     },
     {
-        "name": "Hey there little guy",
-        "description": "Minimize the boss",
-        "modifier": " ",
-        "codeSnippet": "function littleGuy(boss) {return boss.defense -= 5}",
-        "shopDescription": "-5 boss defense"
+        "name": "Developer Rage",
+        "description": "Throw your keyboard dealing damage to yourself and your boss",
+        "modifier": "--",
+        "value": [10,5],
+        "codeSnippet": "function rage(player,boss) {bossHealth -= 10; playerHealth -= 5; return;}",
+        "shopDescription": "-5 to player health, -10 to boss health"
     },
     {
-        "name": "Feeling Pretty Large",
-        "description": "The feeling of a good refactor. Grow 1.5x",
-        "modifier": " ",
-        "codeSnippet": "function large(defense) {return defense += 5}",
-        "shopDescription": "+5 defense"
+        "name": "Software Update",
+        "description": "Install the newest update for your character",
+        "modifier": "+",
+        "value": [20],
+        "codeSnippet": "Update();",
+        "shopDescription": "+20 health"
     },
     {
-        "name": "I Think You're Stupid",
-        "description": "Call the boss stupid. Boss loses 5 health",
-        "modifier": " ",
-        "codeSnippet": "function stupid(boss) {return boss.health -= 5}",
-        "shopDescription": "-5 to boss health"
+        "name": "Alt F4",
+        "desciption": "Immediatley close your application. Player and boss health reset.",
+        "modifier": "==",
+        "value": [100,100],
+        "codeSnippet": "ALT F4",
+        "shopDescription": "All health set to 100"
+    },
+    {
+        "name": "Merge Conflict",
+        "description": "Merge failed. Subtract 20 health from the player and boss",
+        "modifier": "--",
+        "value": [20,20],
+        "codeSnippet": "Please commit your changes or stash them before you merge. Aborting",
+        "shopDescription": "-20 health to player and boss"
+    },
+    {
+        "name": "C⅏rrupt Ⅎil∃s",
+        "description": "The bosses opens a corrupt file and loses 8 health",
+        "modifier": "-",
+        "codeSnippet": "ERROR_FILE_CORRUPT",
+        "shopDescription": "-8 to boss health"
+    },
+    {
+        "name": "Office Hours",
+        "description": "Stay late and get some extra help. Add 10 to your health and damage the boss for 3",
+        "modifier": "+-",
+        "value": [10,3],
+        "codeSnippet": "const hoursWorked = () => return hours + 3",
+        "shopDescription": "+10 player health, -2 boss health"
     }
+   
     
 ]
