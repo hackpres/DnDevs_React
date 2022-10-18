@@ -11,9 +11,10 @@ import SupportModalContent from "../components/Modal/SupportModalContent";
 import "../assets/css/Login.css";
 import { redirect, useNavigate } from "react-router-dom";
 import Home from "./Home";
+import Canvas from "../utils/Canvas";
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ username: '', password: '' });
+  const [formState, setFormState] = useState({ username: "", password: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [login, { error, data }] = useMutation(LOGIN_USER);
   const navigate = useNavigate();
@@ -31,67 +32,61 @@ const Login = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    
+
     try {
       const { data } = await login({
         variables: { ...formState },
       });
       Auth.login(data.login.token);
-      navigate("/home")
+      navigate("/home");
     } catch (e) {
       console.error(e);
     }
     // clear form values
     setFormState({
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     });
   };
 
-
   return (
     <>
-      <div id='login'>
-        <div id='logo'></div>
-        <div id='terminal'>
-          <Heading id='styletitle' h="h1" title='login' />
-          {/* {
-            isSubmitted ?
-              navigate('home')
-              : */}
-              <form onSubmit={handleFormSubmit}>
-                <div>
-                  <input
-                    className="username form-input"
-                    placeholder="username"
-                    id='username'
-                    name='username'
-                    type='text'
-                    value={formState.username}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <input
-                    type="password"
-                    id="password"
-                    className="password form-input"
-                    name="password"
-                    placeholder="*******"
-                    value={formState.password}
-                    onChange={handleChange}
-                  />
-                </div>
-                <button id='stylesubmit'
-                  type='submit'
-                >
-                  submit
-                </button>
-              </form>
-          {/* } */}
+      <Canvas>
+        <div id="login">
+          <div id="logo"></div>
+          <div id="terminal">
+            <Heading id="styletitle" h="h1" title="login" />
+            <form onSubmit={handleFormSubmit}>
+              <div>
+                <input
+                  className="username form-input"
+                  placeholder="username"
+                  id="username"
+                  name="username"
+                  type="text"
+                  value={formState.username}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  id="password"
+                  className="password form-input"
+                  name="password"
+                  placeholder="*******"
+                  value={formState.password}
+                  onChange={handleChange}
+                />
+              </div>
+              <button id="stylesubmit" type="submit">
+                submit
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      </Canvas>
     </>
-  )
-}
+  );
+};
 export default Login;

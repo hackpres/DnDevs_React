@@ -8,6 +8,7 @@ import '../../assets/css/Heading.css'
 function Nav() {
   return (
     <>
+      <div id='navbar'>
     <div className="home">
         <Navigation title="Home" destination="home" />
       </div>
@@ -19,7 +20,8 @@ function Nav() {
       </div>
       <div className="profile">
         <Navigation title="Profile" destination="profile" />
-      </div>
+        </div>
+        </div>
     </>
   )
 }
