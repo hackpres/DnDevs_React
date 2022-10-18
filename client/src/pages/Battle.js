@@ -15,7 +15,6 @@ import RenderCard from '../utils/RenderCard';
 import BattleCard from '../components/Graphics/BattleCard';
 import playCard from '../utils/playCard';
 import Text from "../components/Template/Text";
-import { useLoaderData } from 'react-router-dom';
 
 const BattleLog = styled.div`
   display: flex;
@@ -59,7 +58,7 @@ function Battle() {
   const [log, setLog] = useState([]);
   const [cardIndex, setCardIndex] = useState();
   const [cards, setCards] = useState([]);
-  const data = useLoaderData();
+  const { data } = useQuery(QUERY_CARDS);
 
   useEffect(() => {
     console.log(data);
@@ -141,7 +140,3 @@ function Battle() {
 }
 
 export default Battle
-
-export function loader() {
-  return useQuery(QUERY_CARDS);
-}
