@@ -53,6 +53,7 @@ const battleCardStyle = {
 function Battle() {
   const [playerHP, setPlayerHP] = useState(100);
   const [bossHP, setBossHP] = useState(100);
+  const [log, setLog] = useState([]);
   const [cardIndex, setCardIndex] = useState();
   const [cards, setCards] = useState([]);
   const { data } = useQuery(QUERY_CARDS);
@@ -105,8 +106,8 @@ function Battle() {
                   onClick={() => setCardIndex(index)}
                   deck={data.me.savedCards}
                   index={index} />
-              }) :
-              null
+              })
+              : null
           }
           {cardIndex >= 0 ?
             <div style={battleCardStyle}>
@@ -115,12 +116,13 @@ function Battle() {
                   let cardEffects = (playCard(data.me.savedCards[cardIndex], bossHP, playerHP));
                   setBossHP(cardEffects.bossHealth);
                   setPlayerHP(cardEffects.playerHealth);
+                  setLog(cardEffects.logContent);
+                  console.log(log)
                 }}>
                 Commit Code
               </Play>
             </div> : null
           }
-
         </BattleCard>
       </div>
     </div>
