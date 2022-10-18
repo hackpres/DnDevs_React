@@ -15,7 +15,7 @@ import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Signup = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   const [formState, setFormState] = useState({
     username: '',
     password: '',
@@ -35,17 +35,15 @@ const Signup = () => {
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-
     try {
       const { data } = await addUser({
         variables: { ...formState },
       });
       Auth.login(data.addUser.token);
-      redirect('/home');
     } catch (e) {
       console.error(e);
     }
-
+    redirect('/home');
   };
 
   return (
