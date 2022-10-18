@@ -9,7 +9,7 @@ import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 import "../assets/css/Login.css";
-import { Route } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import Home from "./Home";
 
 const Login = (props) => {
@@ -41,7 +41,6 @@ const Login = (props) => {
     } catch (e) {
       console.error(e);
     }
-
     // clear form values
     setFormState({
       username: '',
@@ -58,7 +57,7 @@ const Login = (props) => {
           <Heading id='styletitle' h="h1" title='login' />
           {
             isSubmitted ?
-              <Route exact path='/home' element={<Home />} />
+              redirect('/home')
               :
               <form onSubmit={handleFormSubmit}>
                 <div>
