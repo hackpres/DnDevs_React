@@ -5,13 +5,17 @@ import background from '../../assets/img/blankterminal.png';
 import Text from '../Template/Text';
 
 const CardsParent = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: row;
   margin: auto auto .25rem auto;
-  width: 60%;
+  width: fit-content;
+  height:fit-content;
 `;
 const CardContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items:center;
   text-align: center;
   background-image: url(${background});
   background-size: cover;
@@ -25,9 +29,9 @@ function CodeCard(props) {
     <CardsParent {...props}>
       <CardContainer>
         <Heading h="h3" title={props.title} />
-        <Text content={props.description} />
-        <Text content={props.snippet} />
-        <Text content={props.shopDescription} />
+       <Text content={props.description} />
+        {/* <Text content={props.snippet} />
+       <Text content={props.shopDescription} /> */}
       </CardContainer>
     </CardsParent>
   )

@@ -13,7 +13,7 @@ export default function RenderCard({ deck, index, onClick, selected }) {
                 style={selected ? applyStyle : null}
                 onClick={onClick}
                 title={deck[index].name} 
-                description={deck[index].codeSnippet}  
+                description={deck[index].shopDescription}  
             />
         </>
     )
