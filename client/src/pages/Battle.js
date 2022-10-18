@@ -5,6 +5,7 @@ import '../assets/css/Battle.css';
 import styled from 'styled-components';
 import background from '../assets/img/blankterminal.png';
 import Avatar from '../components/Graphics/Avatar';
+import Boss from '../components/Graphics/Boss';
 import Healthbar from '../components/Graphics/Healthbar';
 import { useEffect, useState } from 'react';
 import { QUERY_CARDS } from '../utils/queries';
@@ -84,7 +85,7 @@ function Battle() {
             <Avatar />
           </Col>
           <Col>
-            <Avatar />
+            <Boss />
           </Col>
         </Row>
         <Row>

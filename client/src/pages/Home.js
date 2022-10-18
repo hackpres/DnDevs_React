@@ -5,8 +5,9 @@ import Nav from "../components/Navigation/Nav";
 import Modals from "../components/Modal/Modals";
 import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
 import Avatar from "../components/Graphics/Avatar";
-import '../assets/css/Home.css';
+
 import '../assets/css/Nav.css';
+import '../assets/css/Home.css';
 
 function Home() {
   return (
@@ -17,7 +18,7 @@ function Home() {
           <Heading h="h2" title="Home" />
         </div>
         <Avatar />
-        <Navigation title="Battle" destination="battle" />
+        <Navigation title="Battle!" destination="battle" />
         <div id="navbar">
           <Nav></Nav>
         </div>

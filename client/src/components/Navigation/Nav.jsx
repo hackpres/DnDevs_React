@@ -3,14 +3,16 @@ import Navigation from '../Buttons/Navigation'
 import '../../assets/css/Nav.css'
 import '../../assets/css/Heading.css'
 
+
+
 function Nav() {
   return (
     <>
-    <div className="shop">
-        <Navigation className="format" title="Shop" h="h4" destination="shop" />
-      </div>
-      <div className="home">
+    <div className="home">
         <Navigation title="Home" destination="home" />
+      </div>
+    <div className="shop">
+        <Navigation title="Shop" destination="shop" />
       </div>
       <div className="code">
         <Navigation title="Code" destination="code" />
