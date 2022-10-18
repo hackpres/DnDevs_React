@@ -35,9 +35,7 @@ const Login = (props) => {
       const { data } = await login({
         variables: { ...formState },
       });
-
       Auth.login(data.login.token);
-      redirect('/home')
     } catch (e) {
       console.error(e);
     }
@@ -46,6 +44,7 @@ const Login = (props) => {
       username: '',
       password: '',
     });
+    redirect('/home');
   };
 
 
