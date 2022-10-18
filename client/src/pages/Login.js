@@ -9,7 +9,7 @@ import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 import "../assets/css/Login.css";
-import Redirect from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ username: '', password: '' });
