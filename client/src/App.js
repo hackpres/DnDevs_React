@@ -49,16 +49,16 @@ function App() {
     <ApolloProvider client={client}>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="home" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
-        <Route path="shop" element={<Shop />} />
-        <Route path="menu" element={<Menu />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="code" element={<Code />} />
-        <Route path="battle" element={<Battle />} />
-        <Route path="creation" element={<Creation />} />
+        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/shop" element={<Shop />} />
+        <Route exact path="/menu" element={<Menu />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/code" element={<Code />} />
+        <Route exact path="/battle" element={<Battle />} />
+        <Route exact path="/creation" element={<Creation />} />
       </Routes>
     </ApolloProvider>
   );
