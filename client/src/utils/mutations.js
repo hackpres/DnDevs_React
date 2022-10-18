@@ -54,3 +54,20 @@ mutation ChangeAvatar($avatar: String!) {
   }
 }
 `;
+
+export const ADD_WIN = gql`
+mutation AddWin($userId: ID!, $wins: Int) {
+  addWin(userId: $userId, wins: $wins) {
+    username
+    wins
+  }
+}
+`;
+
+export const ADD_LOSS = gql`
+mutation AddLoss($userId: ID!, $losses: Int) {
+  addLoss(userId: $userId, losses: $losses) {
+    loses
+  }
+}
+`;

@@ -37,6 +37,14 @@ const userSchema = new Schema(
     avatar: {
       type: String
     },
+    wins:{
+      type: Number,
+      default: 0
+    },
+    losses:{
+      type: Number,
+      default: 0
+    },
     savedCards: [], 
   },
   // {

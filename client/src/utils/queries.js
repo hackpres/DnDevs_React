@@ -51,3 +51,37 @@ query Users {
   }
 }
 `;
+
+export const QUERY_BOSSES = gql`
+query Bosses {
+  bosses {
+    name
+    attack
+    heal
+    idle
+    death
+    idlePixel
+    deathPixel
+  }
+}
+`;
+
+export const QUERY_BATTLE = gql`
+
+query User {
+  me {
+    _id
+    savedCards {
+      name
+      description
+      modifier
+      value
+      value2
+      codeSnippet
+      shopDescription
+    }
+    wins
+    loses
+  }
+}
+`;

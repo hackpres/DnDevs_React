@@ -65,15 +65,30 @@ const resolvers = {
     removeUser: async (parent, { userId }) => {
       return User.findOneAndDelete({ _id: userId });
     },
-    addGender: async (parent, { userId, gender }) => {
-      return User.findOneAndUpdate(
-        { _id: userId },
-        { $set: { gender: gender } },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+    
+    addWin: async (parent, { wins}, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { wins: wins } },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
+    },
+    addLoss: async (parent, { losses}, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { losses: losses } },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     },
     changeAvatar: async (parent, { avatar}, context) => {
       if (context.user) {
