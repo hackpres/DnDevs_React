@@ -37,7 +37,7 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
-      setIsSubmitted(!isSubmitted);
+      redirect('/home')
     } catch (e) {
       console.error(e);
     }
@@ -55,10 +55,10 @@ const Login = (props) => {
         <div id='logo'></div>
         <div id='terminal'>
           <Heading id='styletitle' h="h1" title='login' />
-          {
+          {/* {
             isSubmitted ?
               redirect('/home')
-              :
+              : */}
               <form onSubmit={handleFormSubmit}>
                 <div>
                   <input
@@ -88,7 +88,7 @@ const Login = (props) => {
                   submit
                 </button>
               </form>
-          }
+          {/* } */}
         </div>
       </div>
     </>
