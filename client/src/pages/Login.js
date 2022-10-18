@@ -9,14 +9,14 @@ import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 import "../assets/css/Login.css";
-import { redirect } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import Home from "./Home";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ username: '', password: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [login, { error, data }] = useMutation(LOGIN_USER);
-
+  const navigate = useNavigate();
   // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,11 +31,13 @@ const Login = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+    
     try {
       const { data } = await login({
         variables: { ...formState },
       });
       Auth.login(data.login.token);
+      navigate("/home")
     } catch (e) {
       console.error(e);
     }
@@ -44,7 +46,6 @@ const Login = (props) => {
       username: '',
       password: '',
     });
-    redirect('/home');
   };
 
 
@@ -56,7 +57,7 @@ const Login = (props) => {
           <Heading id='styletitle' h="h1" title='login' />
           {/* {
             isSubmitted ?
-              redirect('/home')
+              navigate('home')
               : */}
               <form onSubmit={handleFormSubmit}>
                 <div>

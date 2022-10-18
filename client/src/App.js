@@ -55,7 +55,6 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="/profile" element={<Profile />} />
     <Route path="/code" element={<Code />} />
     <Route path="/battle" element={<Battle />} />
-    <Route path="/creation" element={<Creation />} />
   </Route>
 ));
 
