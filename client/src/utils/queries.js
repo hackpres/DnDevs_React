@@ -45,6 +45,8 @@ query Users {
       modifier
       codeSnippet
       shopDescription
+      value
+      value2
     }
   }
 }
