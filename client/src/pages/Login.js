@@ -8,8 +8,6 @@ import { useMutation } from "@apollo/client";
 import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
-
-import { useNavigate } from "react-router-dom";
 import "../assets/css/Login.css";
 
 const Login = (props) => {
