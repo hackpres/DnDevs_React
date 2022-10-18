@@ -29,7 +29,7 @@
     width: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: flex-end;
     border: solid 2px gray;
     border-radius: 3px;
@@ -47,7 +47,7 @@
     width: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: flex-end;
     border: solid 2px gray;
     border-radius: 3px;
@@ -65,7 +65,7 @@
     width: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: flex-end;
     border: solid 2px gray;
     border-radius: 3px;
@@ -83,7 +83,7 @@
     width: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: flex-end;
     border: solid 2px gray;
     border-radius: 3px;

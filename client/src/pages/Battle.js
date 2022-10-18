@@ -2,7 +2,7 @@ import Action from "../components/Buttons/Action";
 import Modals from "../components/Modal/Modals";
 import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
 import "../assets/css/Battle.css";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import background from "../assets/img/blankterminal.png";
 import Avatar from "../components/Graphics/Avatar";
 import Boss from "../components/Graphics/Boss";
@@ -16,6 +16,31 @@ import BattleCard from "../components/Graphics/BattleCard";
 import playCard from "../utils/playCard";
 import Text from "../components/Template/Text";
 import Typewriter from "typewriter-effect";
+import bossDeath from "../assets/sprites/bosses/demondeath1.png";
+import boss from "../assets/sprites/bosses/demonidle.png";
+import PlayerSprite from "../assets/sprites/user/warrioridle.png";
+import PlayerDeath from "../assets/sprites/user/warriordeath.png";
+const playerAnimation = keyframes`
+100% {background-position: -1000px}
+`;
+const Player = styled.div`
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  background: url(${PlayerSprite}) left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: ${playerAnimation} 0.6s steps(5) infinite;
+`;
+const PlayerDead = styled.div`
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  background: url(${PlayerDeath}) left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: ${playerAnimation} 1s steps(5) forwards;
+`;
 const BattleLog = styled.div`
   display: flex;
   flex-direction: column;
@@ -79,6 +104,28 @@ function Battle() {
     console.log(cardIndex);
   }, [data, cardIndex]);
 
+  //Health tracking useEffect
+  useEffect(() => {
+    if (bossHP < 0) {
+      setBossHP(0);
+    }
+    if (playerHP < 0) {
+      setPlayerHP(0);
+    }
+    if (bossHP > 100) {
+      setBossHP(100);
+    }
+    if (playerHP > 100) {
+      setPlayerHP(100);
+    }
+  });
+  const redrawCards = () => {
+    let cardIndexes = [];
+    for (let index = 0; index < 3; index++) {
+      cardIndexes.push(randNum(data.me.savedCards.length, cardIndexes));
+    }
+    setCards(cardIndexes);
+  };
   return (
     <div id="battle">
       <div>
@@ -109,11 +156,9 @@ function Battle() {
             : ""}
         </BattleLog>
         <Row>
+          <Col>{playerHP <= 0 ? <PlayerDead /> : <Player />}</Col>
           <Col>
-            <Avatar />
-          </Col>
-          <Col>
-            <Boss />
+            {bossHP <= 0 ? <Boss img={bossDeath} /> : <Boss img={boss} />}
           </Col>
         </Row>
         <Row>
@@ -150,8 +195,8 @@ function Battle() {
                   );
                   setBossHP(cardEffects.bossHealth);
                   setPlayerHP(cardEffects.playerHealth);
-
                   setLog([...log, cardEffects.logContent]);
+                  redrawCards();
                   console.log(log);
                 }}
               >
