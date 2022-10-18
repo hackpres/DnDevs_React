@@ -1,7 +1,7 @@
 import RootLayout from "./pages/RootLayout";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
-import Battle, { Loader as cardLoader } from "./pages/Battle";
+import Battle, { loader as cardLoader } from "./pages/Battle";
 import Code from "./pages/Snippets";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";

@@ -13,7 +13,7 @@ import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Signup = () => {
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formState, setFormState] = useState({
     username: '',
     password: '',
@@ -39,7 +39,7 @@ const Signup = () => {
         variables: { ...formState },
       });
       Auth.login(data.addUser.token);
-      document.location.replace("/creation");
+      setIsSubmitted(!isSubmitted);
     } catch (e) {
       console.error(e);
     }
@@ -52,7 +52,11 @@ const Signup = () => {
         <div id='logo'></div>
         <div id='terminal'>
           <Heading id='styletitle' h="h1" title='signup' />
-          <form onSubmit={handleSignUpSubmit}>
+          {
+            isSubmitted ?
+            <Route exact path='/home' element={ <Home /> }/>
+            :
+            <form onSubmit={handleSignUpSubmit}>
             <div>
               <input
                 className="username form-input"
@@ -75,26 +79,14 @@ const Signup = () => {
                 onChange={handleChange}
               />
             </div>
-
             <button id='stylesubmit'
               type='submit'>submit</button>
-
-
           </form>
-
-
-
-
-
+          }
         </div>
       </div>
-
-
-
     </>
   )
-
-
 }
 
 export default Signup;
