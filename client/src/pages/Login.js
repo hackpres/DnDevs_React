@@ -58,7 +58,7 @@ const Login = (props) => {
           <Heading id='styletitle' h="h1" title='login' />
           {
             isSubmitted ?
-              <Route exact path='/home' element={ <Home /> }/>
+              <Route exact path='/home' element={<Home />} />
               :
               <form onSubmit={handleFormSubmit}>
                 <div>
