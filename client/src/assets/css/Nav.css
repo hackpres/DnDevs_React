@@ -8,6 +8,7 @@
 #navbar {
     overflow: hidden;
     position: fixed;
+    color: white;
     bottom: 0;
     width: 95%;
     display: flex;
@@ -27,12 +28,14 @@
     height: 50px;
     width: 50px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
     border: solid 2px gray;
     border-radius: 3px;
     margin-top: 7px;
-    padding-bottom: 25px;
+    padding-top: 20px;
+    padding-bottom: 5px;
     text-decoration: none;
 }
 
@@ -43,12 +46,15 @@
     height: 50px;
     width: 50px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
     border: solid 2px gray;
     border-radius: 3px;
     margin-top: 7px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    text-decoration: none;
 }
 
 .code  {
@@ -58,12 +64,15 @@
     height: 50px;
     width: 50px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
     border: solid 2px gray;
     border-radius: 3px;
     margin-top: 7px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    text-decoration: none;
 }
 
 .profile  {
@@ -73,17 +82,13 @@
     height: 50px;
     width: 50px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    justify-content: end;
+    align-items: flex-end;
     border: solid 2px gray;
     border-radius: 3px;
     margin-top: 7px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    text-decoration: none;
 }
-
-/* .format {
-    position: fixed;
-    bottom: 25px;
-    margin-left: -20px;
-    color: white !important;
-} */

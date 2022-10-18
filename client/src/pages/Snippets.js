@@ -10,8 +10,10 @@ import '../assets/css/Snippets.css';
 function Code() {
   return (
     <div id="snippets">
-      <Modals modalContent={<MainMenuModalContent />} />
-      <Heading h="h3" title="Code Snippets" />
+      <div id="top">
+        <Modals modalContent={<MainMenuModalContent />} />
+        <Heading h="h2" title="Code Snippets" />
+      </div>
       {printCodeCards()}
       <div id="navbar">
         <Nav />
