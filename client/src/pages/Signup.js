@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Home from "./Home";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Heading from "../components/Headings/Heading";
 import { useFormik } from 'formik';
 import Modals from '../components/Modal/Modals';
@@ -20,12 +20,12 @@ const Signup = () => {
     username: '',
     password: '',
   });
-
+  const navigate = useNavigate();
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    
     setFormState({
       ...formState,
       [name]: value,
@@ -40,10 +40,11 @@ const Signup = () => {
         variables: { ...formState },
       });
       Auth.login(data.addUser.token);
+      navigate('/home');
     } catch (e) {
       console.error(e);
     }
-    redirect('/home');
+    
   };
 
   return (
