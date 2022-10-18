@@ -5,41 +5,67 @@ import "../assets/css/Battle.css";
 import styled, { keyframes } from "styled-components";
 import background from "../assets/img/blankterminal.png";
 import Avatar from "../components/Graphics/Avatar";
-import Boss from "../components/Graphics/Boss";
 import Healthbar from "../components/Graphics/Healthbar";
 import { useEffect, useState } from "react";
-import { QUERY_CARDS } from "../utils/queries";
-import { useQuery } from "@apollo/client";
+import { QUERY_BATTLE } from "../utils/queries";
+import { useQuery, useMutation } from "@apollo/client";
+import {ADD_WIN} from "../utils/mutations"
 import randNum from "../utils/randomNum";
 import RenderCard from "../utils/RenderCard";
 import BattleCard from "../components/Graphics/BattleCard";
 import playCard from "../utils/playCard";
 import Text from "../components/Template/Text";
 import Typewriter from "typewriter-effect";
-import bossDeath from "../assets/sprites/bosses/demondeath1.png";
-import boss from "../assets/sprites/bosses/demonidle.png";
+
 import PlayerSprite from "../assets/sprites/user/warrioridle.png";
 import PlayerDeath from "../assets/sprites/user/warriordeath.png";
-const playerAnimation = keyframes`
+import BossSprite from "../assets/sprites/bosses/demonidle.png";
+import BossDeath from "../assets/sprites/bosses/demondeath.png";
+const Animation = keyframes`
 100% {background-position: -1000px}
 `;
+const AnimationBoss = keyframes`
+100% {background-position: -1728px}
+`
+const AnimationBossDeath = keyframes `
+100%{background-position: -6336px}
+`;
+
 const Player = styled.div`
   height: 200px;
   width: 200px;
-  position: absolute;
-  background: url(${PlayerSprite}) left center;
+  background: url('${PlayerSprite}') left center;
   background-repeat: no-repeat;
   background-size: cover;
-  animation: ${playerAnimation} 0.6s steps(5) infinite;
+  animation: ${Animation} 0.6s steps(5) infinite;
+  
 `;
+
 const PlayerDead = styled.div`
   height: 200px;
   width: 200px;
-  position: absolute;
   background: url(${PlayerDeath}) left center;
   background-repeat: no-repeat;
   background-size: cover;
-  animation: ${playerAnimation} 1s steps(5) forwards;
+  animation: ${Animation} 1s steps(5) forwards;
+`;
+
+const Boss = styled.div`
+  height: 160px;
+  width: 288px;
+  background: url(${BossSprite})left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: ${AnimationBoss} 0.9s steps(6) infinite;
+`;
+
+const BossDead = styled.div`
+height: 160px;
+width: 288px;
+  background: url(${BossDeath}) left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: ${AnimationBossDeath} 1s steps(22) forwards;
 `;
 const BattleLog = styled.div`
   display: flex;
@@ -89,10 +115,12 @@ function Battle() {
   const [log, setLog] = useState([]);
   const [cardIndex, setCardIndex] = useState();
   const [cards, setCards] = useState([]);
-  const { data } = useQuery(QUERY_CARDS);
-
+  const { data } = useQuery(QUERY_BATTLE);
+  
+  const [addWin] = useMutation(ADD_WIN);
   useEffect(() => {
     console.log(data);
+   
     if (!cards.length && data) {
       let cardIndexes = [];
       for (let index = 0; index < 3; index++) {
@@ -108,6 +136,12 @@ function Battle() {
   useEffect(() => {
     if (bossHP < 0) {
       setBossHP(0);
+      // addWin({
+      //   variables:{
+      //     userId: data.me._id,
+      //     wins: data.me.wins + 1
+      //   }
+      // })
     }
     if (playerHP < 0) {
       setPlayerHP(0);
@@ -158,7 +192,7 @@ function Battle() {
         <Row>
           <Col>{playerHP <= 0 ? <PlayerDead /> : <Player />}</Col>
           <Col>
-            {bossHP <= 0 ? <Boss img={bossDeath} /> : <Boss img={boss} />}
+            {bossHP <= 0 ? <BossDead/> : <Boss />}
           </Col>
         </Row>
         <Row>

@@ -1,41 +1,14 @@
 [
     {
-        "name": "Boss 1",
+        "name": "Demon",
         "attack": 3,
-        "defense": 5
-        
-    },
-    {
-        "name": "Boss 2",
-        "attack": 4,
-        "defense": 6
-        
-    },
-    {
-        "name": "Boss 3",
-        "attack": 5,
-        "defense": 7
-        
-    },
-    {
-        "name": "Boss 4",
-        "attack": 6,
-        "defense": 8
-        
-    },
-    {
-        "name": "Boss 5",
-        "attack": 7,
-        "defense": 9
-        
-    },
-    {
-        "name": "Boss 6",
-        "attack": 8,
-        "defense": 10
+        "heal": 5,
+        "idle": "../assets/sprites/bosses/demonidle.png",
+        "death": "../assets/sprites/bosses/demondeath.png",
+        "idlePixel": "-1728px",
+        "deathPixel": "-6336px"
         
     }
-
 
 
 

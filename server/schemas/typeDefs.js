@@ -9,6 +9,8 @@ const typeDefs = gql`
     health: Int
     gender: String
     avatar: String
+    wins: Int
+    loses: Int
   }
 
   type Card {
@@ -28,7 +30,11 @@ const typeDefs = gql`
   type Bosses {
     name: String!
     attack: Int!
-    defense: Int!
+    heal: Int!
+    idle: String!
+    death: String!
+    idlePixel: String!
+    deathPixel: String!
   }
   input CardInput {
     name: String!
@@ -53,6 +59,8 @@ const typeDefs = gql`
     removeUser(userId: ID!): User
     addGender(userId: ID!, gender: String!): User
     changeAvatar(avatar: String!): User
+    addWin(userId: ID!, wins: Int): User
+    addLoss(userId: ID!, losses: Int): User
   }
 `;
 

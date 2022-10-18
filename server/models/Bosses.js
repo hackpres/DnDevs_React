@@ -35,7 +35,7 @@ const bossSchema = new Schema(
                 validator: Number.isInteger,
             },
         },
-        defense: {
+        heal: {
             type: Number,
             required: true,
             validate: {
@@ -50,7 +50,22 @@ const bossSchema = new Schema(
                 validator: Number.isInteger,
             },
         },
-        images: imageSchema,
+        idle:{
+          type: String,
+          required: true,
+        },
+        death: {
+          type: String,
+          required: true
+        },
+        idlePixel:{
+          type: String,
+          require: true
+        },
+        deathPixel:{
+          type: String,
+          require: true
+        }
     },
     // {
     //     toJSON: {
