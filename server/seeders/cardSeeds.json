@@ -1,24 +1,26 @@
 [
     {
         "name": "Merge Conflict",
-        "description": "Boss's files failed to merge. Attack twice.",
-        "modifier": " ",
-        "codeSnippet": "function mergeConflict(attack) {return attack += attack}",
-        "shopDescription": "Attack twice"
+        "description": "Merge failed. Subtract 20 health from the player and boss",
+        "modifier": "--",
+        "value": [20,20],
+        "codeSnippet": "Please commit your changes or stash them before you merge. Aborting",
+        "shopDescription": "-20 health to player and boss"
     },
     {
-        "name": "Heels Over Head",
-        "description": "Rotate the boss upside down",
-        "modifier": " ",
-        "codeSnippet": "function heelsOverHead() {<boss style = rotate(180deg)}",
-        "shopDescription": "Rotate the boss upside down"
+        "name": "C⅏rrupt Ⅎil∃s",
+        "description": "The boss opens a corrupt file and loses 8 health",
+        "modifier": "-",
+        "codeSnippet": "ERROR_FILE_CORRUPT",
+        "shopDescription": "-8 to boss health"
     },
     {
         "name": "Office Hours",
-        "description": "Stay late and get some extra help. Add 10 to your defense",
-        "modifier": " ",
-        "codeSnippet": "function officeHours(player){player.hours + 10}",
-        "shopDescription": "+10 defense"
+        "description": "Stay late and get some extra help. Add 10 to your health and damage the boss for 3",
+        "modifier": "+-",
+        "value": [10,3],
+        "codeSnippet": "const hoursWorked = () => return hours + 3",
+        "shopDescription": "+10 player health, -2 boss health"
     }
    
 ]

@@ -15,6 +15,14 @@ const cardSchema = new Schema(
       type: String,
       required: true,
     },
+    value:{
+      type: Number,
+      required: true,
+    },
+    value2:{
+      type: Number,
+      required: false
+    },
     codeSnippet:{
       type: String,
       required: true

@@ -8,12 +8,13 @@ import { useMutation } from "@apollo/client";
 import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
-
-import { useNavigate } from "react-router-dom";
 import "../assets/css/Login.css";
+import { Route } from "react-router-dom";
+import Home from "./Home";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ username: '', password: '' });
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
@@ -36,7 +37,7 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
-      document.location.replace("/home");
+      setIsSubmitted(!isSubmitted);
     } catch (e) {
       console.error(e);
     }
@@ -55,47 +56,42 @@ const Login = (props) => {
         <div id='logo'></div>
         <div id='terminal'>
           <Heading id='styletitle' h="h1" title='login' />
-          <form onSubmit={handleFormSubmit}>
-            <div>
-              <input
-                className="username form-input"
-                placeholder="username"
-                id='username'
-                name='username'
-                type='text'
-                value={formState.username}
-                onChange={handleChange}
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                id="password"
-                className="password form-input"
-                name="password"
-                placeholder="*******"
-                value={formState.password}
-                onChange={handleChange}
-              />
-            </div>
-            <button id='stylesubmit'
-              type='submit'
-            >
-              submit
-            </button>
-
-
-          </form>
-
-
-
-
-
+          {
+            isSubmitted ?
+              <Route exact path='/home' element={ <Home /> }/>
+              :
+              <form onSubmit={handleFormSubmit}>
+                <div>
+                  <input
+                    className="username form-input"
+                    placeholder="username"
+                    id='username'
+                    name='username'
+                    type='text'
+                    value={formState.username}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <input
+                    type="password"
+                    id="password"
+                    className="password form-input"
+                    name="password"
+                    placeholder="*******"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <button id='stylesubmit'
+                  type='submit'
+                >
+                  submit
+                </button>
+              </form>
+          }
         </div>
       </div>
-
-
-
     </>
   )
 }
