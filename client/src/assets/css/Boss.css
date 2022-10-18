@@ -1,0 +1,16 @@
+#bossContainer {
+    height: 100px;
+    width: 150px;
+    padding-bottom: 60px;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    overflow: hidden;
+    /* border: solid 2px rgb(255, 0, 0); */
+    /* margin-top: 10%; */
+}
+
+#boss {
+width: 100%;
+scale: 2.5;
+}

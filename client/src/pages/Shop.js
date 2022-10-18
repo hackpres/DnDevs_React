@@ -4,8 +4,8 @@ import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
 import Modals from "../components/Modal/Modals";
 import Nav from "../components/Navigation/Nav";
 import Action from "../components/Buttons/Action";
-import '../assets/css/Shop.css';
 import '../assets/css/Nav.css';
+import '../assets/css/Shop.css';
 import styled from "styled-components";
 
 const ComingSoon = styled.div`
@@ -20,8 +20,10 @@ const ComingSoon = styled.div`
 function Shop() {
   return (
     <div id="shop">
-      <Modals modalContent={<MainMenuModalContent />} />
-      <Heading h="h3" title="Shop" />
+      <div id="top">
+        <Modals modalContent={<MainMenuModalContent />} />
+        <Heading h="h2" title="Shop" />
+      </div>
       <div id="navbar">
         <Nav />
       </div>
