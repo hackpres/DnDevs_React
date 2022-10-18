@@ -1,34 +1,36 @@
-import Action from '../components/Buttons/Action';
-import Modals from '../components/Modal/Modals';
-import MainMenuModalContent from '../components/Modal/MainMenuModalContent';
-import '../assets/css/Battle.css';
-import styled from 'styled-components';
-import background from '../assets/img/blankterminal.png';
-import Avatar from '../components/Graphics/Avatar';
-import Boss from '../components/Graphics/Boss';
-import Healthbar from '../components/Graphics/Healthbar';
-import { useEffect, useState } from 'react';
-import { QUERY_CARDS } from '../utils/queries';
-import { useQuery } from '@apollo/client';
-import randNum from '../utils/randomNum';
-import RenderCard from '../utils/RenderCard';
-import BattleCard from '../components/Graphics/BattleCard';
-import playCard from '../utils/playCard';
+import Action from "../components/Buttons/Action";
+import Modals from "../components/Modal/Modals";
+import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
+import "../assets/css/Battle.css";
+import styled from "styled-components";
+import background from "../assets/img/blankterminal.png";
+import Avatar from "../components/Graphics/Avatar";
+import Boss from "../components/Graphics/Boss";
+import Healthbar from "../components/Graphics/Healthbar";
+import { useEffect, useState } from "react";
+import { QUERY_CARDS } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+import randNum from "../utils/randomNum";
+import RenderCard from "../utils/RenderCard";
+import BattleCard from "../components/Graphics/BattleCard";
+import playCard from "../utils/playCard";
 import Text from "../components/Template/Text";
-
+import Typewriter from "typewriter-effect";
 const BattleLog = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: left;
+  font-size: 8pt;
   text-align: center;
   background-image: url(${background});
   background-size: contain;
   background-repeat: no-repeat;
   width: 60vw;
   height: 25vw;
-  margin: 20vw .5rem auto auto;
+  margin: 20vw 0.5rem auto auto;
   padding: 1.5rem;
   color: #999;
-  opacity: .8;
+  opacity: 0.8;
 `;
 const Row = styled.div`
   display: flex;
@@ -43,15 +45,19 @@ const Play = styled.button`
   background-color: black;
   font-size: 1.25rem;
   color: white;
-  padding: .5rem 1.25rem;
-  border-radius: .25rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.25rem;
 `;
 const battleCardStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center'
-}
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
+const LogTitle = styled.div`
+  font-size: 1.1rem;
 
+  text-align: center;
+`;
 function Battle() {
   const [playerHP, setPlayerHP] = useState(100);
   const [bossHP, setBossHP] = useState(100);
@@ -68,7 +74,7 @@ function Battle() {
         cardIndexes.push(randNum(data.me.savedCards.length, cardIndexes));
       }
       setCards(cardIndexes);
-      console.log(cards)
+      console.log(cards);
     }
     console.log(cardIndex);
   }, [data, cardIndex]);
@@ -78,7 +84,27 @@ function Battle() {
       <div>
         <Modals modalContent={<MainMenuModalContent />} />
         <BattleLog>
-        {log.length > 0
+          <LogTitle>
+            <Typewriter
+              onInit={(title) => {
+                title
+                  .typeString("Prepare for battle!")
+                  .pauseFor(2000)
+                  .deleteAll(10)
+                  .typeString("Choose your cards wisely")
+                  .pauseFor(2000)
+                  .deleteAll(10)
+                  .typeString("Battle Log")
+                  .start();
+              }}
+            />
+          </LogTitle>
+          {log.length >= 5
+            ? log
+                .shift()
+                .map((text, key) => <Text content={text} key={key}></Text>)
+            : ""}
+          {log.length > 0 && log.length < 5
             ? log.map((text, key) => <Text content={text} key={key}></Text>)
             : ""}
         </BattleLog>
@@ -136,7 +162,7 @@ function Battle() {
         </BattleCard>
       </div>
     </div>
-  )
+  );
 }
 
-export default Battle
+export default Battle;
