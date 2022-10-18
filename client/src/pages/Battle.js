@@ -1,19 +1,19 @@
-import Action from '../components/Buttons/Action';
-import Modals from '../components/Modal/Modals';
-import MainMenuModalContent from '../components/Modal/MainMenuModalContent';
-import '../assets/css/Battle.css';
-import styled from 'styled-components';
-import background from '../assets/img/blankterminal.png';
-import Avatar from '../components/Graphics/Avatar';
-import Healthbar from '../components/Graphics/Healthbar';
-import { useEffect, useState } from 'react';
-import { QUERY_CARDS } from '../utils/queries';
-import { useQuery } from '@apollo/client';
-import randNum from '../utils/randomNum';
-import RenderCard from '../utils/RenderCard';
-import BattleCard from '../components/Graphics/BattleCard';
-import playCard from '../utils/playCard';
-
+import Action from "../components/Buttons/Action";
+import Modals from "../components/Modal/Modals";
+import MainMenuModalContent from "../components/Modal/MainMenuModalContent";
+import "../assets/css/Battle.css";
+import styled from "styled-components";
+import background from "../assets/img/blankterminal.png";
+import Avatar from "../components/Graphics/Avatar";
+import Healthbar from "../components/Graphics/Healthbar";
+import { useEffect, useState } from "react";
+import { QUERY_CARDS } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+import randNum from "../utils/randomNum";
+import RenderCard from "../utils/RenderCard";
+import BattleCard from "../components/Graphics/BattleCard";
+import playCard from "../utils/playCard";
+import Text from "../components/Template/Text";
 const BattleLog = styled.div`
   display: flex;
   justify-content: center;
@@ -23,10 +23,10 @@ const BattleLog = styled.div`
   background-repeat: no-repeat;
   width: 60vw;
   height: 25vw;
-  margin: 20vw .5rem auto auto;
+  margin: 20vw 0.5rem auto auto;
   padding: 1.5rem;
   color: #999;
-  opacity: .8;
+  opacity: 0.8;
 `;
 const Row = styled.div`
   display: flex;
@@ -41,14 +41,14 @@ const Play = styled.button`
   background-color: black;
   font-size: 1.25rem;
   color: white;
-  padding: .5rem 1.25rem;
-  border-radius: .25rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0.25rem;
 `;
 const battleCardStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center'
-}
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
 
 function Battle() {
   const [playerHP, setPlayerHP] = useState(100);
@@ -58,15 +58,18 @@ function Battle() {
   const [cards, setCards] = useState([]);
   const { data } = useQuery(QUERY_CARDS);
 
+  const battleLog = document.getElementById("battleLog");
+  
   useEffect(() => {
     console.log(data);
+    console.log(log)
     if (!cards.length && data) {
       let cardIndexes = [];
       for (let index = 0; index < 3; index++) {
         cardIndexes.push(randNum(data.me.savedCards.length, cardIndexes));
       }
       setCards(cardIndexes);
-      console.log(cards)
+      console.log(cards);
     }
     console.log(cardIndex);
   }, [data, cardIndex]);
@@ -76,8 +79,7 @@ function Battle() {
       <div>
         <Modals modalContent={<MainMenuModalContent />} />
         <BattleLog>
-          {/* {function to print log text} */}
-          <p>Player hit Boss for 5 damage</p>
+          {log.length > 0 ? log.map((text, key) => <Text content = {text} key={key}></Text>): ""}
         </BattleLog>
         <Row>
           <Col>
@@ -96,37 +98,56 @@ function Battle() {
           </Col>
         </Row>
 
-        <BattleCard >
-          {
-            cards.length && data ?
-              cards.map((index, key) => {
-                return <RenderCard
-                  key={key}
-                  selected={index === cardIndex ? true : false}
-                  onClick={() => setCardIndex(index)}
-                  deck={data.me.savedCards}
-                  index={index} />
+        <BattleCard>
+          {cards.length && data
+            ? cards.map((index, key) => {
+                return (
+                  <RenderCard
+                    key={key}
+                    selected={index === cardIndex ? true : false}
+                    onClick={() => setCardIndex(index)}
+                    deck={data.me.savedCards}
+                    index={index}
+                  />
+                );
               })
-              : null
-          }
-          {cardIndex >= 0 ?
+            : null}
+          {cardIndex >= 0 ? (
             <div style={battleCardStyle}>
               <Play
                 onClick={() => {
-                  let cardEffects = (playCard(data.me.savedCards[cardIndex], bossHP, playerHP));
+                  let cardEffects = playCard(
+                    data.me.savedCards[cardIndex],
+                    bossHP,
+                    playerHP
+                  );
                   setBossHP(cardEffects.bossHealth);
                   setPlayerHP(cardEffects.playerHealth);
-                  setLog(cardEffects.logContent);
-                  console.log(log)
-                }}>
+                  
+                  setLog([...log, cardEffects.logContent])
+                  console.log(log);
+                  
+                  
+                  
+                  // await settingLog().then(
+                  // console.log(log),
+                  // battleLog.innerHTML = "",
+                  // log.map((text) => (battleLog.innerHTML += `<p>${text}</p>`))
+                  // )
+                  // {log != temp ? (
+                  //   battleLog.innerHTML="",
+                  //   log.map(x => battleLog.innerHTML += `<p>${x}</p>`)
+                  // ) : ""};
+                }}
+              >
                 Commit Code
               </Play>
-            </div> : null
-          }
+            </div>
+          ) : null}
         </BattleCard>
       </div>
     </div>
-  )
+  );
 }
 
-export default Battle
+export default Battle;
