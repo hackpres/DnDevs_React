@@ -41,7 +41,7 @@ const Signup = () => {
         variables: { ...formState },
       });
       Auth.login(data.addUser.token);
-      setIsSubmitted(!isSubmitted);
+      redirect('/home');
     } catch (e) {
       console.error(e);
     }
@@ -54,10 +54,10 @@ const Signup = () => {
         <div id='logo'></div>
         <div id='terminal'>
           <Heading id='styletitle' h="h1" title='signup' />
-          {
+          {/* {
             isSubmitted ?
             redirect('/home')
-            :
+            : */}
             <form onSubmit={handleSignUpSubmit}>
             <div>
               <input
@@ -84,7 +84,7 @@ const Signup = () => {
             <button id='stylesubmit'
               type='submit'>submit</button>
           </form>
-          }
+          {/* } */}
         </div>
       </div>
     </>
