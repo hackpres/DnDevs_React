@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Home from "./Home";
+import { Route } from "react-router-dom";
 import Heading from "../components/Headings/Heading";
 import { useFormik } from 'formik';
 import Modals from '../components/Modal/Modals';
