@@ -9,7 +9,7 @@ import Navigation from "../components/Buttons/Navigation";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 import "../assets/css/Login.css";
-import { Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ username: '', password: '' });
@@ -57,9 +57,7 @@ const Login = (props) => {
           <Heading id='styletitle' h="h1" title='login' />
           {
             isSubmitted ?
-              <Redirect
-                to={`/home`}
-              />
+              <Route path='/redirect-page' element={ <Redirect to="/home" /> }/>
               :
               <form onSubmit={handleFormSubmit}>
                 <div>
