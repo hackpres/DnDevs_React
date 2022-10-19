@@ -281,7 +281,7 @@ function Battle() {
       let modifier = bossModifier();
       console.log(modifier);
       console.log(bossData);
-      let bossEffect = playBoss(bossData, modifier, bossHealth, playerHealth);
+      let bossEffect = playBoss(bossData, modifier, bossHealth, playerHealth, data.me.username);
       setBossHP(bossEffect.bossHealth);
       setPlayerHP(bossEffect.playerHealth);
       setLog([...log, playerLog, bossEffect.logContent]);
@@ -374,7 +374,9 @@ function Battle() {
                   let cardEffects = playCard(
                     data.me.savedCards[cardIndex],
                     bossHP,
-                    playerHP
+                    playerHP,
+                    data.me.username,
+                    data.bosses[level]
                   );
                   setBossHP(cardEffects.bossHealth);
                   setPlayerHP(cardEffects.playerHealth);
