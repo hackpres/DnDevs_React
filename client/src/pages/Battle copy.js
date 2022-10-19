@@ -16,9 +16,6 @@ import BattleCard from "../components/Graphics/BattleCard";
 import playCard from "../utils/playCard";
 import Text from "../components/Template/Text";
 import Typewriter from "typewriter-effect";
-import playBoss from "../utils/playBoss";
-import bossModifier from "../utils/bossModifier";
-import cardBackground from "../assets/img/backgrounds/cardBackground.png"
 
 import PlayerSprite from "../assets/sprites/user/warrioridle.png";
 import PlayerDeath from "../assets/sprites/user/warriordeath.png";
@@ -38,10 +35,7 @@ const AnimationBoss = keyframes`
 const AnimationBossDeath = keyframes`
 100%{background-position: -4608px}
 `;
-const LogText = styled(Text)`
-  padding: 0;
-  margin: 0;
-`;
+
 const Player = styled.div`
   height: 200px;
   width: 200px;
@@ -79,7 +73,7 @@ const BossDead = styled.div`
 `;
 const BattleLog = styled.div`
   display: flex;
-  flex-direcion: column;
+  flex-direction: column;
   justify-content: left;
   font-size: 8pt;
   text-align: center;
@@ -92,7 +86,6 @@ const BattleLog = styled.div`
   padding: 1.5rem;
   color: #999;
   opacity: 0.8;
-  line-height: .45rem;
 `;
 const Row = styled.div`
   display: flex;
@@ -117,23 +110,9 @@ const battleCardStyle = {
 };
 const LogTitle = styled.div`
   font-size: 1.1rem;
+
   text-align: center;
-  margin-bottom: .75rem;
 `;
-const CardHolder = {
-  margin: 0,
-  width: '28vw',
-  display: 'flex',
-  flexWrap: 'nowrap',
-};
-const deckCardStyle = {
-  backgroundImage: `url(${cardBackground})`,
-  backgroundSize: 'contain',
-  backgroundRepeat: 'no-repeat',
-  display: 'grid',
-  flexDirection: 'row',
-  margin: 0,
-}
 function Battle() {
   const [playerHP, setPlayerHP] = useState(100);
   const [bossHP, setBossHP] = useState(100);
@@ -145,11 +124,11 @@ function Battle() {
   const [addLoss] = useMutation(ADD_LOSS);
   const [bossIdle, setBossIdle] = useState(DemonSprite);
   const [bossDeath, setBossDeath] = useState(DemonDeath);
-  
+  let counter = 0;
   //add win to user profile
   const win = async () => {
     // console.log(data)
-    
+    counter++;
     try {
       await addWin({
         variables: {
@@ -160,14 +139,7 @@ function Battle() {
     } catch (e) {
       console.error(e);
     }
-      //Final boss function
-      // setTimeout(() => {
-      //   setBossHP(100);
-      //   setBossIdle(CyclopsSprite);
-      //   setBossDeath(CyclopsDeath);
-      // }, 3000);
-
-      //2nd Boss function
+    if(counter = 2)
       setTimeout(() => {
         setBossHP(100);
         setBossIdle(FrostSprite);
@@ -192,7 +164,9 @@ function Battle() {
 
   useEffect(() => {
     console.log(data);
-
+    // if(data.me.wins > 1){
+    //   setBossIdle(FrostSprite)
+    // }
     if (!cards.length && data) {
       let cardIndexes = [];
       for (let index = 0; index < 3; index++) {
@@ -221,7 +195,6 @@ function Battle() {
       setPlayerHP(100);
     }
   });
-
   const redrawCards = () => {
     let cardIndexes = [];
     for (let index = 0; index < 3; index++) {
@@ -229,18 +202,6 @@ function Battle() {
     }
     setCards(cardIndexes);
   };
-
-  const bossTurn = (bossData, playerLog) => {
-    setTimeout(() => {
-      let modifier = bossModifier();
-      console.log(modifier);
-      console.log(bossData);
-      let bossEffect = playBoss(bossData, modifier, bossHP, playerHP)
-      setBossHP(bossEffect.bossHealth);
-      setPlayerHP(bossEffect.playerHealth);
-      setLog([...log, playerLog, bossEffect.logContent]);
-    }, 1500);
-  }
   return (
     <div id="battle">
       <div>
@@ -262,10 +223,12 @@ function Battle() {
             />
           </LogTitle>
           {log.length >= 5
-            ? setLog(log.slice(1))
+            ? log
+                .shift()
+                .map((text, key) => <Text content={text} key={key}></Text>)
             : ""}
           {log.length > 0 && log.length < 5
-            ? log.map((text, key) => <LogText content={text} key={key} />)
+            ? log.map((text, key) => <Text content={text} key={key}></Text>)
             : ""}
         </BattleLog>
         <Row>
@@ -287,13 +250,11 @@ function Battle() {
           </Col>
         </Row>
 
-        <BattleCard style={CardHolder}>
+        <BattleCard>
           {cards.length && data
             ? cards.map((index, key) => {
                 return (
                   <RenderCard
-                    parentStyle={CardHolder}
-                    style={deckCardStyle}
                     key={key}
                     selected={index === cardIndex ? true : false}
                     onClick={() => setCardIndex(index)}
@@ -316,7 +277,7 @@ function Battle() {
                   setPlayerHP(cardEffects.playerHealth);
                   setLog([...log, cardEffects.logContent]);
                   redrawCards();
-                  bossTurn(data.bosses[0], cardEffects.logContent);
+                  console.log(log);
                 }}
               >
                 Commit Code
