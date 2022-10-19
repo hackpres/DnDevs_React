@@ -6,7 +6,7 @@
 
 #home {
     background-image: url('../img/backgrounds/home.png');
-    background-size: cover !important;
+    background-size: contain !important;
     background-repeat: no-repeat;
     color: white;
     height: 100vh;
@@ -15,7 +15,7 @@
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    /* justify-content: space-around;  */
     flex-direction: column;
 }
 
