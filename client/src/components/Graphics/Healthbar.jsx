@@ -2,19 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HealthbarContainer = styled.div`
-  width: 40vw;
-  height: 8vw;
+  width: 85%;
+  height: fit-content;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin: auto;
   background: black;
+  border: 5px;
+  border-style: solid;
+  border-color:black;
+  margin-bottom: 10px;
 `;
 const HPBar = styled.div`
-  width: 38vw;
-  height: 6vw;
+  width: 90%;
+  height: fit-content;
   background: rebeccapurple;
 `;
 const HPCurrent = styled.div`

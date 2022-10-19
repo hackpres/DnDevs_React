@@ -19,6 +19,7 @@ import Typewriter from "typewriter-effect";
 import playBoss from "../utils/playBoss";
 import bossModifier from "../utils/bossModifier";
 import cardBackground from "../assets/img/backgrounds/cardBackground.png";
+import Canvas from "../utils/Canvas";
 
 import PlayerSprite from "../assets/sprites/user/warrioridle.png";
 import PlayerDeath from "../assets/sprites/user/warriordeath.png";
@@ -34,7 +35,7 @@ const AnimationPlayer = keyframes`
 `;
 const AnimationPlayerDeath = keyframes`
 100% {background-position: -1600px }
-`
+`;
 const AnimationBoss = keyframes`
 100% {background-position: -3240px}
 `;
@@ -46,6 +47,8 @@ const LogText = styled(Text)`
   margin: 0;
 `;
 const Player = styled.div`
+  position: relative;
+  top: 35px;
   height: 200px;
   width: 200px;
   background: url("${PlayerSprite}") left center;
@@ -62,6 +65,8 @@ const PlayerDead = styled.div`
   animation: ${AnimationPlayerDeath} 1s steps(8) forwards;
 `;
 const Boss = styled.div`
+  position: relative;
+  right: 80px;
   height: 300px;
   width: 540px;
   background: url(${DemonSprite}) left center;
@@ -79,24 +84,32 @@ const BossDead = styled.div`
 `;
 const BattleLog = styled.div`
   display: flex;
-  flex-direcion: column;
+  flex-direction: column;
   justify-content: left;
   font-size: 8pt;
   text-align: center;
+  align-items: flex-start;
   background-image: url(${background});
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
-  width: 60vw;
+  width: 80%;
   height: 25vw;
-  margin: 20vw 0.5rem auto auto;
   padding: 1.5rem;
   color: #999;
   opacity: 0.8;
   line-height: 0.45rem;
 `;
-const Row = styled.div`
+const AvatarRow = styled.div`
+  display: flex;
+  align-items: flex-end;
+  height: 20%;
+`;
+
+const HealthRow = styled.div`
   display: flex;
 `;
+
 const Col = styled.div`
   flex: 1;
 `;
@@ -121,50 +134,49 @@ const LogTitle = styled.div`
   margin-bottom: 0.75rem;
 `;
 const cardHolder = {
-  display: 'flex',
-  justifyContent: 'space-around',
-  overflow: 'hidden',
+  display: "flex",
+  justifyContent: "space-around",
+  overflow: "hidden",
+  height: "fit-content",
 };
 const deckCardStyle = {
-  display: 'inline-flex',
+  display: "inline-flex",
   backgroundImage: `url(${cardBackground})`,
-  backgroundSize: 'contain',
-  backgroundRepeat: 'no-repeat',
-  margin: 0,
-  overflow: 'hidden',
-  width: '30vw',
-  height: '47.85vw',
-  margin: 'auto',
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  overflow: "hidden",
+  width: "40vw",
+  height: "100%",
+  margin: "auto",
 };
 const cardTitle = {
-  fontSize: '3.75vw',
-  color: '#999',
-  display: 'flex',
-  justifyContent: 'center',
-  marginTop: '2rem',
-  width: '30vw',
-  overflow: 'hidden',
+  fontSize: "1em",
+  color: "#999",
+  display: "flex",
+  marginTop: "2rem",
+  width: "38vw",
+  overflow: "hidden",
+  marginLeft: "15px",
 };
 const cardContent = {
-  fontSize: '3.5vw',
-  color: '#999',
-  display: 'flex',
-  justifyContent: 'center',
-  textAlign: 'center',
-  margin: '3rem auto',
-  width: '25vw',
-  overflow: 'hidden',
+  fontSize: "1em",
+  textAlign: "center",
+  color: "#999",
+  display: "flex",
+  margin: "3rem auto",
+  width: "38vw",
+  overflow: "hidden",
 };
 const cardWrapper = {
-  display: 'block',
-  overflow: 'hidden',
+  display: "block",
+  overflow: "hidden",
 };
 const cardWrapperSelected = {
-  display: 'block',
-  overflow: 'hidden',
-  border: 'solid 3px red',
-  borderRadius: '1vw',
-}
+  display: "block",
+  overflow: "hidden",
+  border: "solid 3px red",
+  borderRadius: "1vw",
+};
 function Battle() {
   const [playerHP, setPlayerHP] = useState(100);
   const [bossHP, setBossHP] = useState(100);
@@ -179,7 +191,7 @@ function Battle() {
   const [level, setLevel] = useState(0);
   //add win to user profile
   const win = async () => {
-    console.log(level)
+    console.log(level);
 
     try {
       await addWin({
@@ -195,14 +207,14 @@ function Battle() {
     switch (level) {
       case 0:
         //2nd Boss function
-        
-          setTimeout(() => {
+
+        setTimeout(() => {
           setBossHP(100);
           setBossIdle(FrostSprite);
           setBossDeath(FrostDeath);
           setLevel(1);
         }, 3000);
-      break;
+        break;
       case 1:
         setTimeout(() => {
           setBossHP(100);
@@ -283,104 +295,116 @@ function Battle() {
     }, 1500);
   };
   return (
-    <div id="battle">
-      <div>
-        <Modals modalContent={<MainMenuModalContent />} />
-        <BattleLog>
-          <LogTitle>
-            <Typewriter
-              onInit={(title) => {
-                title
-                  .typeString("Prepare for battle!")
-                  .pauseFor(2000)
-                  .deleteAll(10)
-                  .typeString("Choose your cards wisely")
-                  .pauseFor(2000)
-                  .deleteAll(10)
-                  .typeString("Battle Log")
-                  .start();
-              }}
-            />
-          </LogTitle>
-          {log.length >= 5 ? setLog(log.slice(1)) : ""}
-          {log.length > 0 && log.length < 5
-            ? log.map((text, key) => <LogText content={text} key={key} />)
-            : ""}
-        </BattleLog>
-        <Row>
-          <Col>{playerHP <= 0 ? <PlayerDead /> : <Player />}</Col>
-          <Col>
-            {bossHP <= 0 ? (
-              <BossDead style={{ backgroundImage: `url(${bossDeath})` }} />
-            ) : (
-              <Boss style={{ backgroundImage: `url(${bossIdle})` }} />
-            )}
-          </Col>
-          <button onClick = {()=> setBossHP(0)}>Kill Boss</button>
-          <button onClick= {()=> setPlayerHP(0)}>Kill Player</button>
-        </Row>
-        <Row>
-          <Col>
-            <Healthbar health={playerHP} />
-          </Col>
-          <Col>
-            <Healthbar health={bossHP} />
-          </Col>
-        </Row>
+    <>
+      <Canvas>
+        <div id="battle">
+          <div>
+            <Modals modalContent={<MainMenuModalContent />} />
+            <BattleLog>
+              <LogTitle>
+                <Typewriter
+                  onInit={(title) => {
+                    title
+                      .typeString("Prepare for battle!")
+                      .pauseFor(2000)
+                      .deleteAll(10)
+                      .typeString("Choose your cards wisely")
+                      .pauseFor(2000)
+                      .deleteAll(10)
+                      .typeString("Battle Log")
+                      .start();
+                  }}
+                />
+              </LogTitle>
+              {log.length >= 5 ? setLog(log.slice(1)) : ""}
+              {log.length > 0 && log.length < 5
+                ? log.map((text, key) => <LogText content={text} key={key} />)
+                : ""}
+            </BattleLog>
+            <AvatarRow>
+              <Col>{playerHP <= 0 ? <PlayerDead /> : <Player />}</Col>
+              <Col>
+                {bossHP <= 0 ? (
+                  <BossDead style={{ backgroundImage: `url(${bossDeath})` }} />
+                ) : (
+                  <Boss style={{ backgroundImage: `url(${bossIdle})` }} />
+                )}
+              </Col>
+            </AvatarRow>
+            <HealthRow>
+              <Col>
+                <Healthbar health={playerHP} />
+              </Col>
+              <Col>
+                <Healthbar health={bossHP} />
+              </Col>
+            </HealthRow>
 
-        <BattleCard style={cardHolder}>
-          {cards.length && data
-            ? cards.map((index, key) => {
-                return (
-                  <BattleCard
-                  style={cardHolder}
-                  key={key}
-                >
-                  <div 
-                    style={deckCardStyle}
-                    onClick={() => setCardIndex(index)}
+            <BattleCard style={cardHolder}>
+              {cards.length && data
+                ? cards.map((index, key) => {
+                    return (
+                      <BattleCard style={cardHolder} key={key}>
+                        <div
+                          style={deckCardStyle}
+                          onClick={() => setCardIndex(index)}
+                        >
+                          <div
+                            style={
+                              index === cardIndex
+                                ? cardWrapperSelected
+                                : cardWrapper
+                            }
+                          >
+                            <h3 style={cardTitle}>
+                              {data.me.savedCards[index].name}
+                            </h3>
+                            <p style={cardContent}>
+                              {data.me.savedCards[index].shopDescription}
+                            </p>
+                          </div>
+                        </div>
+                      </BattleCard>
+                    );
+                  })
+                : null}
+            </BattleCard>
+            <BattleCard>
+              {cardIndex >= 0 ? (
+                <div style={battleCardStyle}>
+                  <Play
+                    style={{ display: "block" }}
+                    onClick={() => {
+                      let cardEffects = playCard(
+                        data.me.savedCards[cardIndex],
+                        bossHP,
+                        playerHP
+                      );
+                      setBossHP(cardEffects.bossHealth);
+                      setPlayerHP(cardEffects.playerHealth);
+                      setLog([...log, cardEffects.logContent]);
+                      redrawCards();
+                      bossTurn(
+                        data.bosses[level],
+                        cardEffects.logContent,
+                        cardEffects.bossHealth,
+                        cardEffects.playerHealth
+                      );
+                    }}
                   >
-                    <div 
-                      style={index === cardIndex ? cardWrapperSelected : cardWrapper}
-                    >
-                      <h3 style={cardTitle}>
-                        {data.me.savedCards[index].name}
-                      </h3>
-                      <p style={cardContent}>
-                        {data.me.savedCards[index].shopDescription}
-                      </p>
-                    </div>
-                  </div>
-                </BattleCard>
-                );
-              })
-            : null}
-        </BattleCard>
-        <BattleCard>
-          {cardIndex >= 0 ? (
-            <div style={battleCardStyle}>
-              <Play
-                style={{display: 'block'}}
-                onClick={() => {
-                  let cardEffects = playCard(
-                    data.me.savedCards[cardIndex],
-                    bossHP,
-                    playerHP
-                  );
-                  setBossHP(cardEffects.bossHealth);
-                  setPlayerHP(cardEffects.playerHealth);
-                  setLog([...log, cardEffects.logContent]);
-                  redrawCards();
-                  bossTurn(data.bosses[level], cardEffects.logContent, cardEffects.bossHealth, cardEffects.playerHealth);
-                }}
-              >
-                Commit Code
-              </Play>
-            </div>
-          ) : null}
-        </BattleCard>
-      </div>
-    </div>
+                    Commit Code
+                  </Play>
+                </div>
+              ) : null}
+            </BattleCard>
+          </div>
+          <div>
+            <button onClick={() => setBossHP(0)}>Kill Boss</button>
+            <button onClick={() => setPlayerHP(0)}>Kill Player</button>
+          </div>
+        </div>
+      </Canvas>
+    </>
   );
 }
 
