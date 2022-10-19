@@ -81,7 +81,7 @@ query User {
       shopDescription
     }
     wins
-    loses
+    losses
   }
 }
 `;

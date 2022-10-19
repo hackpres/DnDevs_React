@@ -56,7 +56,7 @@ mutation ChangeAvatar($avatar: String!) {
 `;
 
 export const ADD_WIN = gql`
-mutation AddWin($userId: ID!, $wins: Int) {
+mutation AddWin($userId: ID!, $wins: Int!) {
   addWin(userId: $userId, wins: $wins) {
     username
     wins
@@ -65,9 +65,10 @@ mutation AddWin($userId: ID!, $wins: Int) {
 `;
 
 export const ADD_LOSS = gql`
-mutation AddLoss($userId: ID!, $losses: Int) {
+mutation AddLoss($userId: ID!, $losses: Int!) {
   addLoss(userId: $userId, losses: $losses) {
-    loses
+    username
+    losses
   }
 }
 `;

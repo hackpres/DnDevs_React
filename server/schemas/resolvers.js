@@ -66,29 +66,29 @@ const resolvers = {
       return User.findOneAndDelete({ _id: userId });
     },
     
-    addWin: async (parent, { wins}, context) => {
-      if (context.user) {
+    addWin: async (parent, { userId, wins}, context) => {
+     
         return User.findOneAndUpdate(
-          { _id: context.user._id },
+          { _id: userId },
           { $set: { wins: wins } },
           {
             new: true,
             runValidators: true,
           }
         );
-      }
+      
     },
-    addLoss: async (parent, { losses}, context) => {
-      if (context.user) {
+    addLoss: async (parent, {userId, losses}, context) => {
+     
         return User.findOneAndUpdate(
-          { _id: context.user._id },
+          { _id: userId},
           { $set: { losses: losses } },
           {
             new: true,
             runValidators: true,
           }
         );
-      }
+      
     },
     changeAvatar: async (parent, { avatar}, context) => {
       if (context.user) {

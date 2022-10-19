@@ -10,7 +10,7 @@ const typeDefs = gql`
     gender: String
     avatar: String
     wins: Int
-    loses: Int
+    losses: Int
   }
 
   type Card {
@@ -59,8 +59,8 @@ const typeDefs = gql`
     removeUser(userId: ID!): User
     addGender(userId: ID!, gender: String!): User
     changeAvatar(avatar: String!): User
-    addWin(userId: ID!, wins: Int): User
-    addLoss(userId: ID!, losses: Int): User
+    addWin(userId: ID!, wins: Int!): User
+    addLoss(userId: ID!losses: Int!): User
   }
 `;
 
