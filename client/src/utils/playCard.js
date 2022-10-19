@@ -5,11 +5,9 @@ const playCard = (cardData, bossHealth, playerHealth) => {
     switch (cardData.modifier) {
         case "-":
             return {
-            
                 playerHealth: playerHealth,
                 bossHealth: bossHealth - cardData.value,
                 logContent: `Player hit Boss for ${cardData.value} damage!`,
-
             }
             // subtract from boss
         case "+-":
