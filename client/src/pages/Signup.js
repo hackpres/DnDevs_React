@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import Modals from "../components/Modal/Modals";
 import SupportModalContent from "../components/Modal/SupportModalContent";
 import signupSchema from "../utils/signupSchema";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../assets/css/Signup.css";
 import Canvas from "../utils/Canvas";
 
@@ -29,7 +29,7 @@ const Signup = () => {
       [name]: value,
     });
   };
-
+  const navigate = useNavigate()
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -39,7 +39,7 @@ const Signup = () => {
         variables: { ...formState },
       });
       Auth.login(data.addUser.token);
-      document.location.replace("/home");
+      navigate("/home");
     } catch (e) {
       console.error(e);
     }
