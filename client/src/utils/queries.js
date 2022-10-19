@@ -67,6 +67,7 @@ export const QUERY_BATTLE = gql`
 query User {
   me {
     _id
+    username
     savedCards {
       name
       description
