@@ -31,10 +31,6 @@ const typeDefs = gql`
     name: String!
     attack: Int!
     heal: Int!
-    idle: String!
-    death: String!
-    idlePixel: String!
-    deathPixel: String!
   }
   input CardInput {
     name: String!

@@ -10,7 +10,14 @@
         "attack": 10,
         "heal": 4  
         
+    },
+    {
+        "name": "Cyclops",
+        "attack": 12,
+        "heal": 10  
+        
     }
+
 
 
 

@@ -58,10 +58,6 @@ query Bosses {
     name
     attack
     heal
-    idle
-    death
-    idlePixel
-    deathPixel
   }
 }
 `;
@@ -87,10 +83,6 @@ query User {
     name
     attack
     heal
-    idle
-    death
-    idlePixel
-    deathPixel
   }
 }
 `;
