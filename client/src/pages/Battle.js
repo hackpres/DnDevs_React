@@ -129,15 +129,23 @@ const battleCardStyle = {
   alignItems: "center",
 };
 const LogTitle = styled.div`
+  display: block;
+  width: 100%;
   font-size: 1.1rem;
   text-align: center;
   margin-bottom: 0.75rem;
+`;
+const LogContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
 `;
 const cardHolder = {
   display: "flex",
   justifyContent: "space-around",
   overflow: "hidden",
   height: "fit-content",
+  marginTop: "2rem",
 };
 const deckCardStyle = {
   display: "inline-flex",
@@ -273,7 +281,7 @@ function Battle() {
     if (playerHP > 100) {
       setPlayerHP(100);
     }
-  });
+  }, [bossHP, playerHP]);
 
   const redrawCards = () => {
     let cardIndexes = [];
@@ -288,7 +296,13 @@ function Battle() {
       let modifier = bossModifier();
       console.log(modifier);
       console.log(bossData);
-      let bossEffect = playBoss(bossData, modifier, bossHealth, playerHealth);
+      let bossEffect = playBoss(
+        bossData,
+        modifier,
+        bossHealth,
+        playerHealth,
+        data.me.username
+      );
       setBossHP(bossEffect.bossHealth);
       setPlayerHP(bossEffect.playerHealth);
       setLog([...log, playerLog, bossEffect.logContent]);

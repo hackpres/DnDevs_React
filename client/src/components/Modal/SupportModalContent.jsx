@@ -1,8 +1,15 @@
 import Heading from '../Headings/Heading';
 import Modals, { ListItem } from './Modals';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import randNum from '../../utils/randomNum';
+
+const randNum = (array, index) => {
+    let number = Math.floor(Math.random() * array)
+    if (number === index) {
+        randNum(array, index)        
+    }
+    return number
+}
 
 const DevName = styled.h4`
     font-family: sans-serif;
@@ -64,37 +71,39 @@ const jokes = [
     }
 ];
 const SupportModalContent = () => {
-    const [titleIndex, setTitleIndex] = useState();
-    const [contentIndex, setJokeIndex] = useState();
-    const devIndex = randNum(developers.length, [])
-    const jokeIndex = randNum(jokes.length, [])
+    const [titleIndex, setTitleIndex] = useState(0);
+    const [contentIndex, setJokeIndex] = useState(0);
 
     function changeState(state) {
-        const indexPos = randNum(developers.length, []);
+        const indexPos = parseInt(randNum(developers.length, []));
         if (state === indexPos) {
             changeState()
         }
-        return indexPos;
+        return parseInt(indexPos);
     };
+    function handleClick() {
+        let newTitleIndex = changeState(titleIndex)
+        let newContentIndex = changeState(contentIndex)
+        setTitleIndex(newTitleIndex)
+        setJokeIndex(newContentIndex)
+    };
+
     return (
         <>
             <Heading h='h2' title='Support' />
             <ul>
                 <ListItem>
                     <Modals 
-                        label="Devs Got Jokes" 
+                        label="Devs Got Jokes"
                         modalContent={
                             <>
                                 <Heading title='HAHA' />
-                                <DevName>{developers[randNum(devIndex, [])]}</DevName>
-                                <DevQuip>{jokes[jokeIndex].joke}</DevQuip>
-                                <QuipNote>{jokes[jokeIndex].answer}</QuipNote>
+                                <DevName>{developers[titleIndex]}</DevName>
+                                <DevQuip>{jokes[contentIndex].joke}</DevQuip>
+                                <QuipNote>{jokes[contentIndex].answer}</QuipNote>
                                 <button
                                     style={nextStyle}
-                                    onClick={() => {
-                                        setTitleIndex(changeState([titleIndex]))
-                                        setJokeIndex(changeState([contentIndex]))
-                                    }}
+                                    onClick={handleClick}
                                 >
                                     Next
                                 </button>
