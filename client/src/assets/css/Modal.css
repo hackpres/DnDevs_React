@@ -1,0 +1,11 @@
+.modal {
+    background: url(../img/blankterminal.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 40vh auto auto auto;
+    height: 40vh;
+    width: 80vw;
+}
+.modalContentWrapper {
+    padding-top: 8vh;
+}
