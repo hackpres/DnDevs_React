@@ -1,12 +1,14 @@
 [
     {
         "name": "Demon",
-        "attack": 3,
-        "heal": 5,
-        "idle": "../assets/sprites/bosses/demonidle.png",
-        "death": "../assets/sprites/bosses/demondeath.png",
-        "idlePixel": "-1728px",
-        "deathPixel": "-6336px"
+        "attack": 5,
+        "heal": 5  
+        
+    },
+    {
+        "name": "Frost Giant",
+        "attack": 10,
+        "heal": 4  
         
     }
 
