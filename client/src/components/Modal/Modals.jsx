@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import Menu from '../Buttons/Menu';
 import CloseMenu from '../Buttons/CloseMenu';
 import styled from 'styled-components';
+import '../../assets/css/Modal.css'
 
 export const ListItem = styled.li`
 padding: 0.5em
@@ -23,12 +24,16 @@ function Modals(props) {
     <>
       <Menu label={props.label} openModal={openModal} />
       <Modal
+        className='modal'
+        portalClassName='modalStyle'
         isOpen={modalIsOpen}
         afterOpen={props.afterOpen}
         onRequestClose={closeModal}
       >
-        {props.modalContent}
-        <CloseMenu label="exit" closeModal={closeModal} />
+        <div className='modalContentWrapper'>
+          {props.modalContent}
+          <CloseMenu label="exit" closeModal={closeModal} />
+        </div>
       </Modal>
     </>
   )
