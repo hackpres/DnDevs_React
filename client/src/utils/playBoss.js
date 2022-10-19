@@ -1,7 +1,7 @@
 
 
 const playBoss = (bossData, modifier, bossHealth, playerHealth, playerName) => {
-    const value = bossData.attackl;
+    const value = bossData.attack;
     const value2 = bossData.heal;
     const bossName = bossData.name;
     switch (modifier) {

@@ -266,7 +266,7 @@ function Battle() {
     if (playerHP > 100) {
       setPlayerHP(100);
     }
-  }, [bossHP, playerHP]);
+  }, []);
 
   const redrawCards = () => {
     let cardIndexes = [];
@@ -282,8 +282,8 @@ function Battle() {
       console.log(modifier);
       console.log(bossData);
       let bossEffect = playBoss(bossData, modifier, bossHealth, playerHealth, data.me.username);
-      setBossHP(bossEffect.bossHealth);
-      setPlayerHP(bossEffect.playerHealth);
+      setBossHP(parseInt(bossEffect.bossHealth));
+      setPlayerHP(parseInt(bossEffect.playerHealth));
       setLog([...log, playerLog, bossEffect.logContent]);
     }, 1500);
   };
@@ -379,8 +379,10 @@ function Battle() {
                     data.me.username,
                     data.bosses[level]
                   );
-                  setBossHP(cardEffects.bossHealth);
-                  setPlayerHP(cardEffects.playerHealth);
+                  console.log(parseInt(cardEffects.playerHealth))
+                  setBossHP(parseInt(cardEffects.bossHealth));
+                  setPlayerHP(parseInt(cardEffects.playerHealth));
+                  console.log(parseInt(cardEffects.playerHealth))
                   setLog([...log, cardEffects.logContent]);
                   redrawCards();
                   bossTurn(data.bosses[level], cardEffects.logContent, cardEffects.bossHealth, cardEffects.playerHealth);
