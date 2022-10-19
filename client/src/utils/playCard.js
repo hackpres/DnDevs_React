@@ -7,35 +7,35 @@ const playCard = (cardData, bossHealth, playerHealth, playerName, bossData) => {
             return {
                 playerHealth: playerHealth,
                 bossHealth: bossHealth - cardData.value,
-                logContent: `${playerName} hit ${bossName} for ${cardData.value} damage!`,
+                logContent: `${playerName} hit boss for ${cardData.value} damage!`,
             }
             // subtract from boss
         case "+-":
             return {
                 playerHealth: playerHealth + cardData.value,
                 bossHealth: bossHealth - cardData.value2,
-                logContent: `${playerName} hit ${bossName} for ${cardData.value} damage && healed ${cardData.value} health!`
+                logContent: `${playerName} hit boss for ${cardData.value} damage && healed ${cardData.value} health!`
             }
             // add to player && subtract from boss
         case "--":  
             return {
                 playerHealth: playerHealth - cardData.value2,
                 bossHealth: bossHealth - cardData.value,
-                logContent: `${playerName} hit ${bossName} for ${cardData.value} damage && took ${cardData.value2} recoil damage!`
+                logContent: `${playerName} hit boss for ${cardData.value} damage && took ${cardData.value2} recoil damage!`
             }
             // subtract from player && boss
         case "-+":
             return {
                 playerHealth: playerHealth + cardData.value2,
                 bossHealth: bossHealth - cardData.value,
-                logContent: `${playerName} hit self for ${cardData.value} damage && healed ${bossName} for ${cardData.value} health!`
+                logContent: `${playerName} hit self for ${cardData.value} damage && healed boss for ${cardData.value} health!`
             }
             // subtract from player && add to boss
         case "++":
             return {
                 playerHealth: playerHealth + cardData.value,
                 bossHealth: bossHealth - cardData.value2,
-                logContent: `${playerName} healed ${bossName} for ${cardData.value} damage && self for ${cardData.value} health!`
+                logContent: `${playerName} healed boss for ${cardData.value} damage && self for ${cardData.value} health!`
             }
             // add to player && boss
         case "=":
@@ -49,7 +49,7 @@ const playCard = (cardData, bossHealth, playerHealth, playerName, bossData) => {
             return {
                 playerHealth: cardData.value,
                 bossHealth: cardData.value2,
-                logContent: `${playerName} health set to ${cardData.value} && ${bossName} health set to ${cardData.value}!`
+                logContent: `${playerName} health set to ${cardData.value} && boss health set to ${cardData.value}!`
             }
         default:
             return {

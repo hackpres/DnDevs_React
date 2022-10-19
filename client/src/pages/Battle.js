@@ -406,7 +406,44 @@ function Battle() {
                       );
                     }}
                   >
-                    Commit Code
+                    <div 
+                      style={index === cardIndex ? cardWrapperSelected : cardWrapper}
+                    >
+                      <h3 style={cardTitle}>
+                        {data.me.savedCards[index].name}
+                      </h3>
+                      <p style={cardContent}>
+                        {data.me.savedCards[index].shopDescription}
+                      </p>
+                    </div>
+                  </div>
+                </BattleCard>
+                );
+              })
+            : null}
+        </BattleCard>
+        <BattleCard>
+          {cardIndex >= 0 ? (
+            <div style={battleCardStyle}>
+              <Play
+                style={{display: 'block'}}
+                onClick={() => {
+                  console.log(data.bosses[level])
+                  let cardEffects = playCard(
+                    data.me.savedCards[cardIndex],
+                    bossHP,
+                    playerHP,
+                    data.me.username,
+                    data.bosses[level]
+                  );
+                  setBossHP(cardEffects.bossHealth);
+                  setPlayerHP(cardEffects.playerHealth);
+                  setLog([...log, cardEffects.logContent]);
+                  redrawCards();
+                  bossTurn(data.bosses[level], cardEffects.logContent, cardEffects.bossHealth, cardEffects.playerHealth);
+                }}
+              >
+                 Commit Code
                   </Play>
                 </div>
               ) : null}
