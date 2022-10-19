@@ -18,7 +18,7 @@ import Text from "../components/Template/Text";
 import Typewriter from "typewriter-effect";
 import playBoss from "../utils/playBoss";
 import bossModifier from "../utils/bossModifier";
-import cardBackground from "../assets/img/backgrounds/cardBackground.png"
+import cardBackground from "../assets/img/backgrounds/cardBackground.png";
 
 import PlayerSprite from "../assets/sprites/user/warrioridle.png";
 import PlayerDeath from "../assets/sprites/user/warriordeath.png";
@@ -92,7 +92,7 @@ const BattleLog = styled.div`
   padding: 1.5rem;
   color: #999;
   opacity: 0.8;
-  line-height: .45rem;
+  line-height: 0.45rem;
 `;
 const Row = styled.div`
   display: flex;
@@ -118,22 +118,22 @@ const battleCardStyle = {
 const LogTitle = styled.div`
   font-size: 1.1rem;
   text-align: center;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 `;
 const CardHolder = {
   margin: 0,
-  width: '28vw',
-  display: 'flex',
-  flexWrap: 'nowrap',
+  width: "28vw",
+  display: "flex",
+  flexWrap: "nowrap",
 };
 const deckCardStyle = {
   backgroundImage: `url(${cardBackground})`,
-  backgroundSize: 'contain',
-  backgroundRepeat: 'no-repeat',
-  display: 'grid',
-  flexDirection: 'row',
+  backgroundSize: "contain",
+  backgroundRepeat: "no-repeat",
+  display: "grid",
+  flexDirection: "row",
   margin: 0,
-}
+};
 function Battle() {
   const [playerHP, setPlayerHP] = useState(100);
   const [bossHP, setBossHP] = useState(100);
@@ -145,11 +145,11 @@ function Battle() {
   const [addLoss] = useMutation(ADD_LOSS);
   const [bossIdle, setBossIdle] = useState(DemonSprite);
   const [bossDeath, setBossDeath] = useState(DemonDeath);
-  
+  const [level, setLevel] = useState(0);
   //add win to user profile
   const win = async () => {
-    // console.log(data)
-    
+    console.log(level)
+
     try {
       await addWin({
         variables: {
@@ -160,24 +160,34 @@ function Battle() {
     } catch (e) {
       console.error(e);
     }
-      //Final boss function
-      // setTimeout(() => {
-      //   setBossHP(100);
-      //   setBossIdle(CyclopsSprite);
-      //   setBossDeath(CyclopsDeath);
-      // }, 3000);
-
-      //2nd Boss function
-      setTimeout(() => {
-        setBossHP(100);
-        setBossIdle(FrostSprite);
-        setBossDeath(FrostDeath);
-      }, 3000);
-    
+    //Final boss function
+    switch (level) {
+      case 0:
+        //2nd Boss function
+        
+          setTimeout(() => {
+          setBossHP(100);
+          setBossIdle(FrostSprite);
+          setBossDeath(FrostDeath);
+          setLevel(1);
+        }, 3000);
+      break;
+      case 1:
+        setTimeout(() => {
+          setBossHP(100);
+          setBossIdle(CyclopsSprite);
+          setBossDeath(CyclopsDeath);
+          setLevel(2);
+        }, 3000);
+        break;
+      default:
+        break;
+    }
   };
   //adds loss to user profile
   const loss = async () => {
     // console.log(data)
+    setLevel(0);
     try {
       await addLoss({
         variables: {
@@ -206,11 +216,11 @@ function Battle() {
 
   //Health tracking useEffect
   useEffect(() => {
-    if (bossHP < 0) {
+    if (bossHP <= 0) {
       setBossHP(0);
       win();
     }
-    if (playerHP < 0) {
+    if (playerHP <= 0) {
       setPlayerHP(0);
       loss();
     }
@@ -235,12 +245,12 @@ function Battle() {
       let modifier = bossModifier();
       console.log(modifier);
       console.log(bossData);
-      let bossEffect = playBoss(bossData, modifier, bossHP, playerHP)
+      let bossEffect = playBoss(bossData, modifier, bossHP, playerHP);
       setBossHP(bossEffect.bossHealth);
       setPlayerHP(bossEffect.playerHealth);
       setLog([...log, playerLog, bossEffect.logContent]);
     }, 1500);
-  }
+  };
   return (
     <div id="battle">
       <div>
@@ -261,9 +271,7 @@ function Battle() {
               }}
             />
           </LogTitle>
-          {log.length >= 5
-            ? setLog(log.slice(1))
-            : ""}
+          {log.length >= 5 ? setLog(log.slice(1)) : ""}
           {log.length > 0 && log.length < 5
             ? log.map((text, key) => <LogText content={text} key={key} />)
             : ""}
@@ -277,6 +285,8 @@ function Battle() {
               <Boss style={{ backgroundImage: `url(${bossIdle})` }} />
             )}
           </Col>
+          <button onClick = {()=> setBossHP(0)}>Kill Boss</button>
+          <button onClick= {()=> setPlayerHP(0)}>Kill Player</button>
         </Row>
         <Row>
           <Col>
@@ -316,7 +326,9 @@ function Battle() {
                   setPlayerHP(cardEffects.playerHealth);
                   setLog([...log, cardEffects.logContent]);
                   redrawCards();
-                  bossTurn(data.bosses[0], cardEffects.logContent);
+                  bossTurn(data.bosses[level], cardEffects.logContent);
+                  // console.log(data.bosses[level])
+                  // console.log(`Level: ${level}`)
                 }}
               >
                 Commit Code

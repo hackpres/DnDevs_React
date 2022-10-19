@@ -49,22 +49,6 @@ const bossSchema = new Schema(
             validate: {
                 validator: Number.isInteger,
             },
-        },
-        idle:{
-          type: String,
-          required: true,
-        },
-        death: {
-          type: String,
-          required: true
-        },
-        idlePixel:{
-          type: String,
-          require: true
-        },
-        deathPixel:{
-          type: String,
-          require: true
         }
     },
     // {
