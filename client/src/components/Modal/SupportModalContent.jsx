@@ -76,7 +76,6 @@ const SupportModalContent = () => {
 
     function changeState(state) {
         const indexPos = parseInt(randNum(developers.length, []));
-        console.log(indexPos);
         if (state === indexPos) {
             changeState()
         }

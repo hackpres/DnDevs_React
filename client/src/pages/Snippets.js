@@ -14,7 +14,10 @@ function Code() {
         <Modals modalContent={<MainMenuModalContent />} />
         <Heading h="h2" title="Code Snippets" />
       </div>
-      {printCodeCards()}
+      <div style={{ position: 'absolute',overflow: 'hidden' }}>
+        {printCodeCards()}
+      </div>
+      
       <div id="navbar">
         <Nav />
       </div>
