@@ -16,13 +16,13 @@ function Landing() {
             <div id="links">
               <Navigation title="login>" destination="login" />
               <Navigation title="signup>" destination="signup" />
+              <Modals
+                label="support>"
+                afterOpen={afterOpenModal()}
+                modalContent={<SupportModalContent />}
+                id="support"
+              />
             </div>
-            <Modals
-              label="support>"
-              afterOpen={afterOpenModal()}
-              modalContent={<SupportModalContent />}
-              id="support"
-            />
           </div>
         </div>
       </Canvas>

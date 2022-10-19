@@ -20,7 +20,6 @@ const Canvas = styled.div`
     max-height: 890px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 5vh;
   }
 `;
 
