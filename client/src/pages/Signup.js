@@ -39,7 +39,7 @@ const Signup = () => {
         variables: { ...formState },
       });
       Auth.login(data.addUser.token);
-      document.location.replace("/creation");
+      document.location.replace("/home");
     } catch (e) {
       console.error(e);
     }
