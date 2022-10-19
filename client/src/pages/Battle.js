@@ -78,9 +78,6 @@ const BossDead = styled.div`
   animation: ${AnimationBossDeath} 1s steps(16) forwards;
 `;
 const BattleLog = styled.div`
-  display: flex;
-  flex-direcion: column;
-  justify-content: left;
   font-size: 8pt;
   text-align: center;
   background-image: url(${background});
@@ -116,14 +113,22 @@ const battleCardStyle = {
   alignItems: "center",
 };
 const LogTitle = styled.div`
+  display: block;
+  width: 100%;
   font-size: 1.1rem;
   text-align: center;
   margin-bottom: 0.75rem;
+`;
+const LogContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 2vw;
 `;
 const cardHolder = {
   display: 'flex',
   justifyContent: 'space-around',
   overflow: 'hidden',
+  marginTop: '2rem',
 };
 const deckCardStyle = {
   display: 'inline-flex',
@@ -261,7 +266,7 @@ function Battle() {
     if (playerHP > 100) {
       setPlayerHP(100);
     }
-  });
+  }, [bossHP, playerHP]);
 
   const redrawCards = () => {
     let cardIndexes = [];
@@ -302,10 +307,14 @@ function Battle() {
               }}
             />
           </LogTitle>
-          {log.length >= 5 ? setLog(log.slice(1)) : ""}
-          {log.length > 0 && log.length < 5
-            ? log.map((text, key) => <LogText content={text} key={key} />)
-            : ""}
+          <LogContentWrapper>
+            {log.length >= 5 ? setLog(log.slice(1)) : ""}
+            {log.length > 0 && log.length < 5
+              ? log.map((text, key) => <LogText content={text} key={key} />)
+              : ""
+            }
+          </LogContentWrapper>
+
         </BattleLog>
         <Row>
           <Col>{playerHP <= 0 ? <PlayerDead /> : <Player />}</Col>
