@@ -7,10 +7,10 @@
 
 #navbar {
     overflow: hidden;
-    position: fixed;
+    position: relative;
     color: white;
     bottom: 0;
-    width: 95%;
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: space-around;
