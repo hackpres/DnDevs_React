@@ -9,7 +9,7 @@ import Healthbar from "../components/Graphics/Healthbar";
 import { useEffect, useState } from "react";
 import { QUERY_BATTLE } from "../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
-import {ADD_WIN} from "../utils/mutations"
+import { ADD_WIN, ADD_LOSS } from "../utils/mutations";
 import randNum from "../utils/randomNum";
 import RenderCard from "../utils/RenderCard";
 import BattleCard from "../components/Graphics/BattleCard";
@@ -26,19 +26,18 @@ const Animation = keyframes`
 `;
 const AnimationBoss = keyframes`
 100% {background-position: -1728px}
-`
-const AnimationBossDeath = keyframes `
+`;
+const AnimationBossDeath = keyframes`
 100%{background-position: -6336px}
 `;
 
 const Player = styled.div`
   height: 200px;
   width: 200px;
-  background: url('${PlayerSprite}') left center;
+  background: url("${PlayerSprite}") left center;
   background-repeat: no-repeat;
   background-size: cover;
   animation: ${Animation} 0.6s steps(5) infinite;
-  
 `;
 
 const PlayerDead = styled.div`
@@ -53,15 +52,15 @@ const PlayerDead = styled.div`
 const Boss = styled.div`
   height: 160px;
   width: 288px;
-  background: url(${BossSprite})left center;
+  background: url(${BossSprite}) left center;
   background-repeat: no-repeat;
   background-size: cover;
   animation: ${AnimationBoss} 0.9s steps(6) infinite;
 `;
 
 const BossDead = styled.div`
-height: 160px;
-width: 288px;
+  height: 160px;
+  width: 288px;
   background: url(${BossDeath}) left center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -116,11 +115,41 @@ function Battle() {
   const [cardIndex, setCardIndex] = useState();
   const [cards, setCards] = useState([]);
   const { data } = useQuery(QUERY_BATTLE);
-  
   const [addWin] = useMutation(ADD_WIN);
+  const [addLoss] = useMutation(ADD_LOSS);
+
+  //add win to user profile
+  const win = async () => {
+    // console.log(data)
+    try {
+      await addWin({
+        variables: {
+          wins: data.me.wins + 1,
+          userId: data.me._id,
+        },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  //adds loss to user profile
+  const loss = async () => {
+    // console.log(data)
+    try {
+      await addLoss({
+        variables: {
+          losses: data.me.losses + 1,
+          userId: data.me._id,
+        },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     console.log(data);
-   
+
     if (!cards.length && data) {
       let cardIndexes = [];
       for (let index = 0; index < 3; index++) {
@@ -136,15 +165,11 @@ function Battle() {
   useEffect(() => {
     if (bossHP < 0) {
       setBossHP(0);
-      // addWin({
-      //   variables:{
-      //     userId: data.me._id,
-      //     wins: data.me.wins + 1
-      //   }
-      // })
+      win();
     }
     if (playerHP < 0) {
       setPlayerHP(0);
+      loss();
     }
     if (bossHP > 100) {
       setBossHP(100);
@@ -191,9 +216,7 @@ function Battle() {
         </BattleLog>
         <Row>
           <Col>{playerHP <= 0 ? <PlayerDead /> : <Player />}</Col>
-          <Col>
-            {bossHP <= 0 ? <BossDead/> : <Boss />}
-          </Col>
+          <Col>{bossHP <= 0 ? <BossDead /> : <Boss />}</Col>
         </Row>
         <Row>
           <Col>
