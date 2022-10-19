@@ -83,5 +83,14 @@ query User {
     wins
     losses
   }
+  bosses {
+    name
+    attack
+    heal
+    idle
+    death
+    idlePixel
+    deathPixel
+  }
 }
 `;

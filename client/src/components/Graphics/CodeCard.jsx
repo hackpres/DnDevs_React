@@ -26,14 +26,17 @@ const CardContainer = styled.div`
 
 function CodeCard(props) {
   return (
-    <CardsParent {...props}>
-      <CardContainer>
-        <Heading h="h3" title={props.title} />
-       <Text content={props.description} />
-        {/* <Text content={props.snippet} />
-       <Text content={props.shopDescription} /> */}
-      </CardContainer>
-    </CardsParent>
+    <>
+      <CardsParent {...props} style={props.parentStyle}>
+        <CardContainer style={props.deckStyle}>
+          <Heading h="h3" title={props.title} />
+        <Text content={props.description} />
+          {/* <Text content={props.snippet} />
+        <Text content={props.shopDescription} /> */}
+        </CardContainer>
+      </CardsParent>
+    </>
+
   )
 }
 

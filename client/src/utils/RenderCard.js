@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CodeCard from '../components/Graphics/CodeCard';
 import Action from '../components/Buttons/Action';
 
-export default function RenderCard({ deck, index, onClick, selected }) {
+export default function RenderCard({ parentStyle, style, deck, index, onClick, selected }) {
 
     const applyStyle = {
         border: "solid 3px red"
@@ -10,6 +10,8 @@ export default function RenderCard({ deck, index, onClick, selected }) {
     return (
         <>
             <CodeCard 
+                parentStyle={parentStyle}
+                deckStyle={style}
                 style={selected ? applyStyle : null}
                 onClick={onClick}
                 title={deck[index].name} 
