@@ -53,7 +53,6 @@ const Player = styled.div`
   background-size: cover;
   animation: ${AnimationPlayer} 0.6s steps(4) infinite;
 `;
-
 const PlayerDead = styled.div`
   height: 200px;
   width: 200px;
@@ -62,7 +61,6 @@ const PlayerDead = styled.div`
   background-size: cover;
   animation: ${AnimationPlayerDeath} 1s steps(8) forwards;
 `;
-
 const Boss = styled.div`
   height: 300px;
   width: 540px;
@@ -71,7 +69,6 @@ const Boss = styled.div`
   background-size: cover;
   animation: ${AnimationBoss} 0.9s steps(6) infinite;
 `;
-
 const BossDead = styled.div`
   height: 300px;
   width: 540px;
@@ -123,20 +120,51 @@ const LogTitle = styled.div`
   text-align: center;
   margin-bottom: 0.75rem;
 `;
-const CardHolder = {
-  margin: 0,
-  width: "28vw",
-  display: "flex",
-  flexWrap: "nowrap",
+const cardHolder = {
+  display: 'flex',
+  justifyContent: 'space-around',
+  overflow: 'hidden',
 };
 const deckCardStyle = {
+  display: 'inline-flex',
   backgroundImage: `url(${cardBackground})`,
-  backgroundSize: "contain",
-  backgroundRepeat: "no-repeat",
-  display: "grid",
-  flexDirection: "row",
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
   margin: 0,
+  overflow: 'hidden',
+  width: '30vw',
+  height: '47.85vw',
+  margin: 'auto',
 };
+const cardTitle = {
+  fontSize: '3.75vw',
+  color: '#999',
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '2rem',
+  width: '30vw',
+  overflow: 'hidden',
+};
+const cardContent = {
+  fontSize: '3.5vw',
+  color: '#999',
+  display: 'flex',
+  justifyContent: 'center',
+  textAlign: 'center',
+  margin: '3rem auto',
+  width: '25vw',
+  overflow: 'hidden',
+};
+const cardWrapper = {
+  display: 'block',
+  overflow: 'hidden',
+};
+const cardWrapperSelected = {
+  display: 'block',
+  overflow: 'hidden',
+  border: 'solid 3px red',
+  borderRadius: '1vw',
+}
 function Battle() {
   const [playerHP, setPlayerHP] = useState(100);
   const [bossHP, setBossHP] = useState(100);
@@ -300,25 +328,39 @@ function Battle() {
           </Col>
         </Row>
 
-        <BattleCard style={CardHolder}>
+        <BattleCard style={cardHolder}>
           {cards.length && data
             ? cards.map((index, key) => {
                 return (
-                  <RenderCard
-                    parentStyle={CardHolder}
+                  <BattleCard
+                  style={cardHolder}
+                  key={key}
+                >
+                  <div 
                     style={deckCardStyle}
-                    key={key}
-                    selected={index === cardIndex ? true : false}
                     onClick={() => setCardIndex(index)}
-                    deck={data.me.savedCards}
-                    index={index}
-                  />
+                  >
+                    <div 
+                      style={index === cardIndex ? cardWrapperSelected : cardWrapper}
+                    >
+                      <h3 style={cardTitle}>
+                        {data.me.savedCards[index].name}
+                      </h3>
+                      <p style={cardContent}>
+                        {data.me.savedCards[index].shopDescription}
+                      </p>
+                    </div>
+                  </div>
+                </BattleCard>
                 );
               })
             : null}
+        </BattleCard>
+        <BattleCard>
           {cardIndex >= 0 ? (
             <div style={battleCardStyle}>
               <Play
+                style={{display: 'block'}}
                 onClick={() => {
                   let cardEffects = playCard(
                     data.me.savedCards[cardIndex],
@@ -330,8 +372,6 @@ function Battle() {
                   setLog([...log, cardEffects.logContent]);
                   redrawCards();
                   bossTurn(data.bosses[level], cardEffects.logContent, cardEffects.bossHealth, cardEffects.playerHealth);
-                  // console.log(data.bosses[level])
-                  // console.log(`Level: ${level}`)
                 }}
               >
                 Commit Code
