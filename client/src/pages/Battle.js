@@ -371,6 +371,7 @@ function Battle() {
               <Play
                 style={{display: 'block'}}
                 onClick={() => {
+                  console.log(data.bosses[level])
                   let cardEffects = playCard(
                     data.me.savedCards[cardIndex],
                     bossHP,
