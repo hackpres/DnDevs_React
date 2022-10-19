@@ -29,14 +29,17 @@ import FrostDeath from "../assets/sprites/bosses/frost_death.png";
 import CyclopsSprite from "../assets/sprites/bosses/cyclops_idle.png";
 import CyclopsDeath from "../assets/sprites/bosses/cyclops_death.png";
 
-const Animation = keyframes`
-100% {background-position: -1000px}
+const AnimationPlayer = keyframes`
+100% {background-position: -800px}
 `;
+const AnimationPlayerDeath = keyframes`
+100% {background-position: -1600px }
+`
 const AnimationBoss = keyframes`
-100% {background-position: -1728px}
+100% {background-position: -3240px}
 `;
 const AnimationBossDeath = keyframes`
-100%{background-position: -4608px}
+100%{background-position: -8640px}
 `;
 const LogText = styled(Text)`
   padding: 0;
@@ -48,7 +51,7 @@ const Player = styled.div`
   background: url("${PlayerSprite}") left center;
   background-repeat: no-repeat;
   background-size: cover;
-  animation: ${Animation} 0.6s steps(5) infinite;
+  animation: ${AnimationPlayer} 0.6s steps(4) infinite;
 `;
 
 const PlayerDead = styled.div`
@@ -57,12 +60,12 @@ const PlayerDead = styled.div`
   background: url(${PlayerDeath}) left center;
   background-repeat: no-repeat;
   background-size: cover;
-  animation: ${Animation} 1s steps(5) forwards;
+  animation: ${AnimationPlayerDeath} 1s steps(8) forwards;
 `;
 
 const Boss = styled.div`
-  height: 160px;
-  width: 288px;
+  height: 300px;
+  width: 540px;
   background: url(${DemonSprite}) left center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -70,8 +73,8 @@ const Boss = styled.div`
 `;
 
 const BossDead = styled.div`
-  height: 160px;
-  width: 288px;
+  height: 300px;
+  width: 540px;
   background: url(${DemonDeath}) left center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -240,12 +243,12 @@ function Battle() {
     setCards(cardIndexes);
   };
 
-  const bossTurn = (bossData, playerLog) => {
+  const bossTurn = (bossData, playerLog, bossHealth, playerHealth) => {
     setTimeout(() => {
       let modifier = bossModifier();
       console.log(modifier);
       console.log(bossData);
-      let bossEffect = playBoss(bossData, modifier, bossHP, playerHP);
+      let bossEffect = playBoss(bossData, modifier, bossHealth, playerHealth);
       setBossHP(bossEffect.bossHealth);
       setPlayerHP(bossEffect.playerHealth);
       setLog([...log, playerLog, bossEffect.logContent]);
@@ -326,7 +329,7 @@ function Battle() {
                   setPlayerHP(cardEffects.playerHealth);
                   setLog([...log, cardEffects.logContent]);
                   redrawCards();
-                  bossTurn(data.bosses[level], cardEffects.logContent);
+                  bossTurn(data.bosses[level], cardEffects.logContent, cardEffects.bossHealth, cardEffects.playerHealth);
                   // console.log(data.bosses[level])
                   // console.log(`Level: ${level}`)
                 }}
