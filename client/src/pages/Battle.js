@@ -266,7 +266,7 @@ function Battle() {
     if (playerHP > 100) {
       setPlayerHP(100);
     }
-  }, []);
+  }, [bossHP, playerHP]);
 
   const redrawCards = () => {
     let cardIndexes = [];
