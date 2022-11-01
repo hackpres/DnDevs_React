@@ -19,7 +19,7 @@ const playBoss = (bossData, modifier, bossHealth, playerHealth, playerName) => {
             }
         case '+':
             return {
-                playerHealth: playerHealth,
+                playerHealth: parseInt(playerHealth),
                 bossHealth: parseInt(bossHealth + value2),
                 logContent: `${bossName} healed ${value2} health.`
             }

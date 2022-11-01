@@ -36,6 +36,19 @@ query User {
 }
 `;
 
+export const QUERY_PROFILE = gql`
+query Me {
+  me {
+    username
+    savedCards {
+      name
+      description
+    }
+    wins
+    losses
+  }
+}
+`
 export const QUERY_CARDS = gql`
 query Users {
   me {
