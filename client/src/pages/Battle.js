@@ -296,6 +296,7 @@ function Battle() {
       let modifier = bossModifier();
       console.log(modifier);
       console.log(bossData);
+
       let bossEffect = playBoss(
         bossData,
         modifier,
@@ -305,6 +306,7 @@ function Battle() {
       );
       setBossHP(bossEffect.bossHealth);
       setPlayerHP(bossEffect.playerHealth);
+
       setLog([...log, playerLog, bossEffect.logContent]);
     }, 1500);
   };
@@ -436,8 +438,10 @@ function Battle() {
                     data.me.username,
                     data.bosses[level]
                   );
-                  setBossHP(cardEffects.bossHealth);
-                  setPlayerHP(cardEffects.playerHealth);
+                  console.log(parseInt(cardEffects.playerHealth))
+                  setBossHP(parseInt(cardEffects.bossHealth));
+                  setPlayerHP(parseInt(cardEffects.playerHealth));
+                  console.log(parseInt(cardEffects.playerHealth))
                   setLog([...log, cardEffects.logContent]);
                   redrawCards();
                   bossTurn(data.bosses[level], cardEffects.logContent, cardEffects.bossHealth, cardEffects.playerHealth);
