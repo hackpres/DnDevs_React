@@ -25,7 +25,19 @@ query user($userId: ID!) {
     }
   }
 `
-
+export const QUERY_PROFILE = gql`
+query Me {
+  me {
+    username
+    savedCards {
+      name
+      description
+    }
+    wins
+    losses
+  }
+}
+`
 
 export const QUERY_ME = gql`
 query User {
