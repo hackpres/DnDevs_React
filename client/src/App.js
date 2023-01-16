@@ -8,7 +8,7 @@ import Signup from "./pages/Signup";
 import Menu from "./pages/Home";
 import Profile from "./pages/Profile";
 import Shop from "./pages/Shop";
-import Creation from "./pages/CharacterCreation";
+// import Creation from "./pages/CharacterCreation";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { createGlobalStyle } from "styled-components";
 import { setContext } from '@apollo/client/link/context';
