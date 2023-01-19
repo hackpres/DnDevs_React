@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from 'mongoose';
 
 const imageSchema = new Schema({
   idleImg: {
@@ -62,4 +62,4 @@ const bossSchema = new Schema(
 
 const Bosses = model("Bosses", bossSchema);
 
-module.exports = Bosses;
+export default Bosses;

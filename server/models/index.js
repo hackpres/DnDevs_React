@@ -1,14 +1,6 @@
 
-const User = require('./User');
-const Bosses = require('./Bosses');
-const Cards = require('./Cards');
+import User from './User.js';
+import Bosses from './Bosses.js';
+import Cards from './Cards.js';
 
-
-
-
-
-
-
-
-
-module.exports = {User, Bosses, Cards};
+export { User, Bosses, Cards };

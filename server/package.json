@@ -1,6 +1,7 @@
 {
   "name": "dungeons_n_devs",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon",

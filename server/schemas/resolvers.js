@@ -1,6 +1,8 @@
-const { Bosses, User } = require("../models");
-const { AuthenticationError } = require("apollo-server-express");
-const { signToken } = require("../utils/auth");
+import { User, Bosses } from "../models/index.js";
+import { AuthenticationError } from "apollo-server-express";
+import { signToken } from "../utils/auth.js";
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 const starterCards = require("../seeders/starterCards.json");
 const resolvers = {
   Query: {
@@ -106,4 +108,4 @@ const resolvers = {
   },
 };
 
-module.exports = resolvers;
+export default resolvers;
