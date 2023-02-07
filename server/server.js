@@ -36,13 +36,7 @@ const startApolloServer = async (app, httpServer) => {
     context: authMiddleware,
   });
   await server.start();
-  app.use(
-    "/",
-    cors(),
-  )
-  expressMiddleware(server, {
-    context: async ({ req }) => ({ token: req.headers.token }),
-  })
+  server.applyMiddleware({ app });
 
   // db.once("open", () => {
   //   app.listen(PORT, () => {
@@ -56,4 +50,4 @@ const startApolloServer = async (app, httpServer) => {
 
 // Call the async function to start the server
 startApolloServer(app, httpServer);
-// export default httpServer;
+export default httpServer;
