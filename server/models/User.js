@@ -17,7 +17,7 @@ const userSchema = new Schema(
         validator: function(v) {
           return /^(?=.*\d{1})(?=.*[a-z]{1})(?=.*[A-Z]{1})(?=.*[!@#$%^&*{|}?~_=+.-]{1})(?=.*[^a-zA-Z0-9])(?!.*\s).{8,32}$/.test(v);
         },
-        message: props => `${props.value} is not a valid password!`
+        message: props => `Password must be over 8 characters in length and include at least One each of; uppercase, lowercase, number, and special characters. ${props.value} is not a valid password.`
       },
       required: [true, 'Password required']
     },

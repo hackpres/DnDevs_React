@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 const httpServer = http.createServer(app);
@@ -36,8 +36,7 @@ const startApolloServer = async (app, httpServer) => {
   });
   await server.start();
   server.applyMiddleware({ 
-    app,
-    path: '/graphql'
+    app
   });
 
   db.once("open", () => {
