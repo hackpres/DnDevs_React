@@ -31,7 +31,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 // });
 
 const client = new ApolloClient({
-  link: "https://dn-devs-react.vercel.app/",
+  uri: "https://dn-devs-react.vercel.app/",
   cache: new InMemoryCache(),
 });
 
