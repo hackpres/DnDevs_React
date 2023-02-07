@@ -9,14 +9,14 @@ import Menu from "./pages/Home";
 import Profile from "./pages/Profile";
 import Shop from "./pages/Shop";
 // import Creation from "./pages/CharacterCreation";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { createGlobalStyle } from "styled-components";
 import { setContext } from '@apollo/client/link/context';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
@@ -31,7 +31,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat("/graphql"),
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
