@@ -7,7 +7,7 @@ import cors from 'cors';
 import http from 'http';
 
 import { typeDefs, resolvers } from './schemas/index.js';
-// import db from './config/connection.js';
+import db from './config/connection.js';
 import { authMiddleware } from './utils/auth.js';
 
 const PORT = process.env.PORT || 3001;
@@ -38,14 +38,14 @@ const startApolloServer = async (app, httpServer) => {
   await server.start();
   server.applyMiddleware({ app });
 
-  // db.once("open", () => {
-  //   app.listen(PORT, () => {
-  //     console.log(`API server running on port ${PORT}!`);
-  //     console.log(
-  //       `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
-  //     );
-  //   });
-  // });
+  db.once("open", () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(
+        `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
+      );
+    });
+  });
 };
 
 // Call the async function to start the server

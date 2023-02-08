@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://all:all@cluster0.zh1fncv.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/dungeondev', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     
