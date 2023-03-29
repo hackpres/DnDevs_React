@@ -1,9 +1,8 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import { expressMiddleware } from '@apollo/server/express4';
-import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
+// import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import path from 'path';
-import cors from 'cors';
+// import cors from 'cors';
 import http from 'http';
 
 import { typeDefs, resolvers } from './schemas/index.js';
@@ -12,9 +11,15 @@ import { authMiddleware } from './utils/auth.js';
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    // plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    context: authMiddleware,
+  });
 
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 const httpServer = http.createServer(app);
@@ -28,13 +33,8 @@ app.get("/", (req, res) => {
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema
-const startApolloServer = async (app, httpServer) => {
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-    context: authMiddleware,
-  });
+const startApolloServer = async (typeDefs, resolvers) => {
+  
   await server.start();
   server.applyMiddleware({ app });
 
@@ -49,5 +49,5 @@ const startApolloServer = async (app, httpServer) => {
 };
 
 // Call the async function to start the server
-startApolloServer(app, httpServer);
-export default httpServer;
+startApolloServer(typeDefs, resolvers);
+// export default httpServer;
