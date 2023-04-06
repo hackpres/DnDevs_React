@@ -5,7 +5,7 @@ const expiration = "2h";
 
 const authMiddleware = function ({ req }) {
   // allows token to be sent via req.body, or headers
-  let token = req.body.token || req.headers.authorization;
+  let token = req.body.token || req.query.token || req.headers.authorization;
 
   // We split the token string into an array and return actual token
   if (req.headers.authorization) {
