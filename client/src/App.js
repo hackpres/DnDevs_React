@@ -31,7 +31,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  uri: 'https://react-portfolio-hackpres.vercel.app/',
   cache: new InMemoryCache(),
 });
 
