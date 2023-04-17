@@ -23,6 +23,9 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
+  "engines" : {
+    "node" : ">=16.0.0 <17.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false && react-scripts build",
