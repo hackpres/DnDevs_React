@@ -14,7 +14,7 @@ import { createGlobalStyle } from "styled-components";
 // import { setContext } from '@apollo/client/link/context';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
-const httpLink = HttpLink({
+const httpLink = new HttpLink({
   uri: '/graphql',
 });
 
