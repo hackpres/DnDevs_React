@@ -35,6 +35,7 @@ const Signup = () => {
     console.log(formState);
 
     try {
+      console.log({ ...formState });
       await addUser({
         variables: { ...formState },
       });
