@@ -31,7 +31,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  uri: 'https://dn-devs-react-hackpres.vercel.app',
+  uri: 'https://dn-devs-react.vercel.app',
   cache: new InMemoryCache(),
 });
 
