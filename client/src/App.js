@@ -9,29 +9,32 @@ import Menu from "./pages/Home";
 import Profile from "./pages/Profile";
 import Shop from "./pages/Shop";
 // import Creation from "./pages/CharacterCreation";
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, concat, ApolloLink, HttpLink } from "@apollo/client";
 import { createGlobalStyle } from "styled-components";
-import { setContext } from '@apollo/client/link/context';
+// import { setContext } from '@apollo/client/link/context';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
-const httpLink = createHttpLink({
+const httpLink = HttpLink({
   uri: '/graphql',
 });
 
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
+const authLink = new ApolloLink((operation, forward) => {
+  operation.setContext(({ headers = {} }) => {
+    // get the authentication token from local storage if it exists
+    // const token = localStorage.getItem('id_token');
+    // return the headers to the context so httpLink can read them
+    return {
+      headers: {
+        ...headers,
+        authorization: localStorage.getItem('id_token') || null,
+      },
+    };
+  })
+  return forward(operation);
 });
 
 const client = new ApolloClient({
-  uri: 'https://dn-devs-react.vercel.app/graphql',
+  link: concat(authLink, httpLink),
   cache: new InMemoryCache(),
 });
 
