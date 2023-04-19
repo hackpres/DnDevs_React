@@ -40,9 +40,10 @@ const Signup = () => {
           ...formState
         },
       });
-      // Auth.login(data.addUser.token);
+      Auth.login(data.addUser.token);
       navigate("/home");
     } catch (e) {
+      console.log(e);
       console.error(e);
     }
   };
