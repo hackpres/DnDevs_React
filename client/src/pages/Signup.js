@@ -43,7 +43,6 @@ const Signup = () => {
       Auth.login(data.addUser.token);
       navigate("/home");
     } catch (e) {
-      console.log(e);
       console.error(e);
     }
   };
