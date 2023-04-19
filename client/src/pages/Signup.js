@@ -34,12 +34,11 @@ const Signup = () => {
     event.preventDefault();
     console.log(formState);
 
-    try {
-      console.log({ ...formState });
+    try { 
       await addUser({
         variables: { ...formState },
       });
-      // Auth.login(data.addUser.token);
+      Auth.login(data.addUser.token);
       navigate("/home");
     } catch (e) {
       console.error(e);

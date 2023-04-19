@@ -1,9 +1,9 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-const {
+import {
   ApolloServerPluginDrainHttpServer,
   ApolloServerPluginLandingPageLocalDefault,
-} = require('apollo-server-core');
+} from 'apollo-server-core';
 import http from 'http';
 import { typeDefs, resolvers } from './schemas/index.js';
 import db from './config/connection.js';
@@ -47,4 +47,3 @@ db.once("open", async () => {
   // Call the async function to start the server
   await startApolloServer(typeDefs, resolvers);
 });
-
